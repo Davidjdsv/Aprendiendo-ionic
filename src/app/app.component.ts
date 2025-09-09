@@ -17,6 +17,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Customers', url: '/customers', icon: 'people' },
+    { title: 'Products', url: '/products', icon: 'cart' },
 
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
