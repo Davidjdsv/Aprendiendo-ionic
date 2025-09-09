@@ -8,3 +8,17 @@
 	--ion-color-primary-shade: #2a72de;
 	--ion-color-primary-tint: #458ffc;
 }
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+ion-button{
+	margin: 20px;
+	width: 200px;
+	color: var(--ion-color-primary-contrast-rgb);
+}
