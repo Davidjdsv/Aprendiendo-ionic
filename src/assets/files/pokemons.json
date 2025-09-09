@@ -1,0 +1,65 @@
+[
+  {
+    "nombre": "Bulbasaur",
+    "nPokedex": 1,
+    "descripcion": "Lleva una semilla en el lomo que crece con él.",
+    "tipo1": "Planta",
+    "tipo2": "Veneno"
+  },
+  {
+    "nombre": "Ivysaur",
+    "nPokedex": 2,
+    "descripcion": "El bulbo de su espalda florece a medida que se fortalece.",
+    "tipo1": "Planta",
+    "tipo2": "Veneno"
+  },
+  {
+    "nombre": "Venusaur",
+    "nPokedex": 3,
+    "descripcion": "La gran flor de su lomo se abre al sol y emite un aroma calmante.",
+    "tipo1": "Planta",
+    "tipo2": "Veneno"
+  },
+  {
+    "nombre": "Charmander",
+    "nPokedex": 4,
+    "descripcion": "La llama en su cola indica su salud y vigor.",
+    "tipo1": "Fuego",
+    "tipo2": null
+  },
+  {
+    "nombre": "Charmeleon",
+    "nPokedex": 5,
+    "descripcion": "Se vuelve agresivo en combate y eleva la temperatura con su cola.",
+    "tipo1": "Fuego",
+    "tipo2": null
+  },
+  {
+    "nombre": "Charizard",
+    "nPokedex": 6,
+    "descripcion": "Escupe fuego intenso y surca los cielos buscando oponentes.",
+    "tipo1": "Fuego",
+    "tipo2": "Volador"
+  },
+  {
+    "nombre": "Squirtle",
+    "nPokedex": 7,
+    "descripcion": "Se esconde en su caparazón y dispara chorros de agua precisos.",
+    "tipo1": "Agua",
+    "tipo2": null
+  },
+  {
+    "nombre": "Wartortle",
+    "nPokedex": 8,
+    "descripcion": "Su cola peluda le ayuda a equilibrarse y nadar mejor.",
+    "tipo1": "Agua",
+    "tipo2": null
+  },
+  {
+    "nombre": "Blastoise",
+    "nPokedex": 9,
+    "descripcion": "Dispara potentes chorros de agua desde los cañones de su caparazón.",
+    "tipo1": "Agua",
+    "tipo2": null
+  }
+]
