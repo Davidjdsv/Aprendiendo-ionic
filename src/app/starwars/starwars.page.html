@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Starwars</ion-title>
+      <ion-searchbar [debounce]="500" aria-placeholder="Search customers" (ionInput)="foundStarWars($event)" placeholder="Search starwars"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -13,21 +14,21 @@
 
   <!-- Se puede hacer por la nueva directiva o por la angigua usando *ngIf -->
   @if (permisos){
-    <ion-list inset="true">
-      <ion-item-sliding *ngFor="let user of starWars">
-        <ion-item [button]="true">
-          <ion-avatar aria-hidden="true" slot="start">
-            <img alt="Starwars's avatar" src="../../assets/files/{{ user.image }}" />
-          </ion-avatar>
-          <ion-label>{{ user.name }}</ion-label>
-          <p>{{ user.description }}</p>
-        </ion-item>
-      </ion-item-sliding>
-    </ion-list>
+  <ion-list inset="true">
+    <ion-item-sliding *ngFor="let user of searchText">
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="Starwars's avatar" src="../../assets/files/{{ user.image }}" />
+        </ion-avatar>
+        <ion-label>{{ user.name }}</ion-label>
+        <p>{{ user.description }}</p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
   } @else {
-    <div class="container card">
-      <ion-label class="label">You don't have permissions</ion-label>
-    </div>
+  <div class="container card">
+    <ion-label class="label">You don't have permissions</ion-label>
+  </div>
   }
 
 </ion-content>
