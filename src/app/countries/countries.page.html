@@ -21,8 +21,9 @@
             <ion-card-subtitle>{{ country.poblacion }}</ion-card-subtitle>
           </ion-card-header>
           
-          <div>
+          <div class="buttons-container">
             <ion-button class="delete-button" (click)="presentAlert(country)">Eliminar</ion-button>
+            <ion-button class="goTo" (click)="goToCity(country)">Ver más</ion-button>
           </div>
 
           <ion-card-content>

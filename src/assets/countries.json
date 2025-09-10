@@ -1,6 +1,7 @@
 {
     "data": [
         {
+            "id": 1,
             "name": "Japón",
             "capital": "Tokio",
             "descripcion": "Japón es un país ubicado en el sur de Asia, conocido por su cultura, tecnología y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 126 millones de habitantes.",
@@ -8,6 +9,7 @@
             "imagen": "japon.jpg"
         },
         {
+            "id": 2,
             "name": "Inglaterra",
             "capital": "Londres",
             "descripcion": "Inglaterra es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 67 millones de habitantes.",
@@ -15,13 +17,15 @@
             "imagen": "inglaterra.jpg"
         },
         {
+            "id": 3,
             "name": "Suiza",
             "capital": "Bern",
             "descripcion": "Suiza es un país ubicado en el sur de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 86 millones de habitantes.",
-            "poblacion": 8600000,
+            "poblacion": 86000000,
             "imagen": "suiza.avif"
         },
         {
+            "id": 4,
             "name": "Francia",
             "capital": "París",
             "descripcion": "Francia es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 67 millones de habitantes.",
@@ -29,6 +33,7 @@
             "imagen": "paris.jpg"
         },
         {
+            "id": 5,
             "name": "Italia",
             "capital": "Roma",
             "descripcion": "Italia es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 60 millones de habitantes.",
@@ -36,6 +41,7 @@
             "imagen": "italia.jpg"
         },
         {
+            "id": 6,
             "name": "España",
             "capital": "Madrid",
             "descripcion": "España es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 47 millones de habitantes.",
@@ -43,6 +49,7 @@
             "imagen": "madrid.jpg"
         },
         {
+            "id": 7,
             "name": "Portugal",
             "capital": "Lisboa",
             "descripcion": "Portugal es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 10 millones de habitantes.",
@@ -50,6 +57,7 @@
             "imagen": "lisboa.jpg"
         },
         {
+            "id": 8,
             "name": "Alemania",
             "capital": "Berlin",
             "descripcion": "Alemania es un país ubicado en el noroeste de Europa, conocido por su cultura, historia y gastronomía. Es uno de los países más grandes del mundo y tiene una población de 83 millones de habitantes.",

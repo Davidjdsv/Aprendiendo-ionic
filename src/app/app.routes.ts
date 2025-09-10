@@ -17,13 +17,18 @@ export const routes: Routes = [
   {
     path: 'products',
     loadComponent: () => import('./products/products.page').then( m => m.ProductsPage)
-  },  {
+  },
+  {
     path: 'starwars',
     loadComponent: () => import('./starwars/starwars.page').then( m => m.StarwarsPage)
   },
   {
     path: 'countries',
     loadComponent: () => import('./countries/countries.page').then( m => m.CountriesPage)
+  },
+  {
+    path: 'city/:id',
+    loadComponent: () => import('./city/city.page').then( m => m.CityPage)
   }
 
 

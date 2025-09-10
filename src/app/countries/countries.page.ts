@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +12,7 @@ import { ToastController, AlertController } from '@ionic/angular';
   templateUrl: './countries.page.html',
   styleUrls: ['./countries.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, RouterLink]
 })
 export class CountriesPage implements OnInit {
 
@@ -77,6 +78,10 @@ export class CountriesPage implements OnInit {
       console.log(error);
       this.presentAlert(error);
     }
+  }
+
+  goToCity(country: any){
+    this.router.navigate(['/city', country.id]);
   }
 
 
