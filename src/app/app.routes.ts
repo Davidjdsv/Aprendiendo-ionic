@@ -20,6 +20,10 @@ export const routes: Routes = [
   },  {
     path: 'starwars',
     loadComponent: () => import('./starwars/starwars.page').then( m => m.StarwarsPage)
+  },
+  {
+    path: 'countries',
+    loadComponent: () => import('./countries/countries.page').then( m => m.CountriesPage)
   }
 
 

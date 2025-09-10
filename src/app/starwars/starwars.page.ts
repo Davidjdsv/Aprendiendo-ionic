@@ -34,7 +34,7 @@ export class StarwarsPage implements OnInit {
     //Obtiene la ruta a consultar a datos o a apis
     //pipe funciona para transformar los datos
     //map funciona para transformar los datos y visualizarlos bien
-    return this.http.get('assets/files/star_wars.json').pipe(
+    return this.http.get('assets/star_wars.json').pipe(
       map((res: any) => {
         console.log(res);
         return res.data;

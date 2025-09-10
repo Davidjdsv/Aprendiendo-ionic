@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "name": "Japón",
+            "capital": "Tokio",
+            "image": "countries/japon.jpg"
+        },
+        {
+            "name": "Inglaterra",
+            "capital": "Londres",
+            "image": "countries/inglaterra.jpg"
+        },
+        {
+            "name": "Suiza",
+            "capital": "Bern",
+            "image": "countries/suiza.avif"
+        }
+    ]
+}
