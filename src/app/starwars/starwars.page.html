@@ -11,16 +11,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list inset="true">
-    <ion-item-sliding *ngFor="let user of starWars">
-      <ion-item [button]="true">
-        <ion-avatar aria-hidden="true" slot="start">
-          <img alt="Starwars's avatar" src="../../assets/files/{{ user.image }}" />
-        </ion-avatar>
-        <ion-label>{{ user.name }}</ion-label>
-        <p>{{ user.description }}</p>
-      </ion-item>
-    </ion-item-sliding>
-  </ion-list>
+  <!-- Se puede hacer por la nueva directiva o por la angigua usando *ngIf -->
+  @if (permisos){
+    <ion-list inset="true">
+      <ion-item-sliding *ngFor="let user of starWars">
+        <ion-item [button]="true">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="Starwars's avatar" src="../../assets/files/{{ user.image }}" />
+          </ion-avatar>
+          <ion-label>{{ user.name }}</ion-label>
+          <p>{{ user.description }}</p>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  } @else {
+    <div class="container card">
+      <ion-label class="label">You don't have permissions</ion-label>
+    </div>
+  }
 
 </ion-content>

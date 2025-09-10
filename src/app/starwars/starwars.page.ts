@@ -20,8 +20,10 @@ export class StarwarsPage implements OnInit {
   constructor(private router: Router, private http: HttpClient) { }
 
   starWars: any[] = []; // Array para almacenar los datos de la API
+  permisos!: boolean;
 
   ngOnInit() {
+    this.permisos = true;
     this.getStarWars().subscribe(res => {
       console.log(res);
       this.starWars = res; // Aloja los datos en la variable starWars en el array para luego ser recorrido
