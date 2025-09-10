@@ -1,32 +1,49 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* ===== Theme tokens ===== */
 :root {
-  // Primary colors
-	--ion-color-primary: #3082fc;
-	--ion-color-primary-rgb: 48,130,252;
-	--ion-color-primary-contrast: #000000;
-	--ion-color-primary-contrast-rgb: 0,0,0;
-	--ion-color-primary-shade: #2a72de;
-	--ion-color-primary-tint: #458ffc;
-	--ion-color-primary-text: #f0f0f0;
+  /* Primary */
+  --ion-color-primary: #3082fc;
+  --ion-color-primary-rgb: 48,130,252;
+  --ion-color-primary-contrast: #ffffff;            /* mejor legibilidad sobre azul */
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #2a72de;
+  --ion-color-primary-tint: #458ffc;
 
-  // Dark colors
-	--ion-color-dark: #28282B;
-	--ion-color-dark-rgb: 40,40,43;
-	--ion-color-dark-contrast: #ffffff;
-	--ion-color-dark-contrast-rgb: 255,255,255;
-	--ion-color-dark-shade: #232326;
-	--ion-color-dark-tint: #3e3e40;
+  /* Dark */
+  --ion-color-dark: #28282B;
+  --ion-color-dark-rgb: 40,40,43;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255,255,255;
+  --ion-color-dark-shade: #232326;
+  --ion-color-dark-tint: #3e3e40;
+
+  /* Custom: delete (global) */
+  --ion-color-delete: #FF2A00;
+  --ion-color-delete-rgb: 255,42,0;
+  --ion-color-delete-contrast: #ffffff;
+  --ion-color-delete-contrast-rgb: 255,255,255;
+  --ion-color-delete-shade: #e02500;
+  --ion-color-delete-tint: #ff3f1a;
 }
 
+/* Remapea primary → delete dentro de esta sección (sin duplicar reglas) */
+.zona-roja {
+  --ion-color-primary: var(--ion-color-delete);
+  --ion-color-primary-rgb: var(--ion-color-delete-rgb);
+  --ion-color-primary-contrast: var(--ion-color-delete-contrast);
+  --ion-color-primary-contrast-rgb: var(--ion-color-delete-contrast-rgb);
+  --ion-color-primary-shade: var(--ion-color-delete-shade);
+  --ion-color-primary-tint: var(--ion-color-delete-tint);
+}
+
+/* ===== Layout ===== */
 .container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 
-.card{
+.card {
   background-color: var(--ion-color-light, #f4f5f8);
   padding: 20px;
   border-radius: 12px;
@@ -37,7 +54,6 @@
   font-size: 20px;
   font-weight: bold;
   line-height: 1.5;
-  padding: 20px;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -45,10 +61,16 @@
   align-items: center;
 }
 
-/* From Uiverse.io by Mhyar-nsi */ 
+@media (max-width: 768px) {
+  .card { width: 100%; }
+}
+
+/* ===== Buttons (usar variables de Ionic) ===== */
 ion-button {
-  background-color: var(--ion-color-primary);
-  color: white;
+  --background: var(--ion-color-primary);
+  --background-hover: var(--ion-color-primary-tint);
+  --color: var(--ion-color-primary-contrast);
+
   margin: 20px;
   border: none;
   cursor: pointer;
@@ -59,12 +81,24 @@ ion-button {
 }
 
 ion-button:hover {
-  background-color: var(--ion-color-primary-tint);
-  box-shadow: 0 0 0 5px #3b83f65f;
-  color: var(--ion-color-primary-contrast);
+  --background: var(--ion-color-primary-tint);
+  box-shadow: 0 0 0 5px rgba(var(--ion-color-primary-rgb), 0.37);
 }
 
+/* Variante por clase (para un botón puntual) */
+ion-button.delete-button {
+  --background: var(--ion-color-delete);
+  --color: var(--ion-color-delete-contrast);
+}
 
-ion-list{
-	border-radius: 12px;
+ion-button.delete-button:hover {
+  --background: var(--ion-color-delete-tint);
+  box-shadow: 0 0 0 5px rgba(var(--ion-color-delete-rgb), 0.37);
+}
+
+/* Alternativa: simplemente usa <ion-button color="delete">…</ion-button> */
+
+/* ===== Lists ===== */
+ion-list {
+  border-radius: 12px;
 }
