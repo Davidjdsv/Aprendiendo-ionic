@@ -1,13 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>countries</ion-title>
+    <ion-title>Countries</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">countries</ion-title>
+      <ion-title size="large">Countries</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="6" size-md="4" *ngFor="let country of countries">
+        <ion-card (click)="presentToast(country)">
+          <img alt="picture of a country" src="../../assets/countries/{{ country.imagen }}" />
+          <ion-card-header>
+            <ion-card-title>{{country.name}},</ion-card-title>
+            <ion-card-subtitle>{{country.capital}}</ion-card-subtitle>
+            <small> {{ country.poblacion }} </small>
+            <p>{{country.descripcion}}</p>
+          </ion-card-header>
+
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
