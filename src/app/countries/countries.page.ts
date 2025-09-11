@@ -17,10 +17,12 @@ import { ToastController, AlertController } from '@ionic/angular';
 export class CountriesPage implements OnInit {
 
   countries: any[] = [];
+  token: any = localStorage.getItem("token");
 
   constructor(private http: HttpClient, public toastController: ToastController, public alertController: AlertController) { }
 
   ngOnInit() {
+    console.log("token:", this.token);
     this.getCountries().subscribe(res => {
       console.log(res);
       this.countries = res;
