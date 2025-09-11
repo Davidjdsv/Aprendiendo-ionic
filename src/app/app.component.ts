@@ -25,6 +25,7 @@ export class AppComponent {
     { title: 'Star Wars', url: '/starwars', icon: 'star' },
     { title: 'Countries', url: '/countries', icon: 'globe' },
     { title: 'Login', url: '/login', icon: 'log-in' },
+    { title: 'Dark Mode', url: '/toggle-dark-mode', icon: 'moon' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
