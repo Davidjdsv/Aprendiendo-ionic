@@ -1,13 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>city</ion-title>
+    <ion-title>{{ name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">city</ion-title>
+      <ion-title size="large">{{ name }}</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div>
+    <ion-button [routerLink]="['/countries']">Return to countries</ion-button>
+  </div>
+
+    <ion-card>
+      <img [src]="'../../assets/countries/' + imagen" alt="picture of a country" />
+
+      <ion-card-header>
+        <ion-card-title>Capital: {{ capital }}</ion-card-title>
+        <ion-card-subtitle>Población: {{ poblacion }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="card-body">
+        <p>{{ descripcion }}</p>
+      </ion-card-content>
+      
+    </ion-card>
+
 </ion-content>

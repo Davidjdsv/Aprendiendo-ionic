@@ -17,18 +17,13 @@
         <ion-card>
           <img alt="picture of a country" src="../../assets/countries/{{ country.imagen }}" />
           <ion-card-header (click)="presentToast(country)">
-            <ion-card-title>{{country.name}}, {{country.capital}}</ion-card-title>
-            <ion-card-subtitle>{{ country.poblacion }}</ion-card-subtitle>
+            <ion-card-title>{{country.name}}</ion-card-title>
           </ion-card-header>
           
           <div class="buttons-container">
             <ion-button class="delete-button" (click)="presentAlert(country)">Eliminar</ion-button>
-            <ion-button class="goTo" (click)="goToCity(country)">Ver más</ion-button>
+            <ion-button class="goTo" [routerLink]="['/city', country.id]">Ver más</ion-button>
           </div>
-
-          <ion-card-content>
-            <p>{{country.descripcion}}</p>
-          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
