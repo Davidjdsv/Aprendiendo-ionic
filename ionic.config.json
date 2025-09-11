@@ -1,5 +1,7 @@
 {
   "name": "IonicProyect",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular-standalone"
 }

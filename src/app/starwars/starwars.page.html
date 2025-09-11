@@ -1,7 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>Starwars</ion-title>
-      <ion-searchbar [debounce]="500" aria-placeholder="Search customers" (ionInput)="foundStarWars($event)" placeholder="Search starwars"></ion-searchbar>
+    <ion-searchbar
+      [debounce]="500"
+      aria-placeholder="Search customers"
+      (ionInput)="foundStarWars($event)"
+      placeholder="Search starwars"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -12,13 +17,27 @@
     </ion-toolbar>
   </ion-header>
 
+  <!-- Componente ion-refresher para pull-to-refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <!-- Contenido del refresher con configuración personalizada -->
+    <ion-refresher-content
+      pulling-icon="chevron-down-circle-outline"
+      pulling-text="Tira hacia abajo para refrescar"
+      refreshing-spinner="circles"
+      refreshing-text="Refrescando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <!-- Se puede hacer por la nueva directiva o por la angigua usando *ngIf -->
   @if (permisos){
   <ion-list inset="true">
     <ion-item-sliding *ngFor="let user of searchText">
       <ion-item [button]="true">
         <ion-avatar aria-hidden="true" slot="start">
-          <img alt="Starwars's avatar" src="../../assets/files/{{ user.image }}" />
+          <img
+            alt="Starwars's avatar"
+            src="../../assets/files/{{ user.image }}"
+          />
         </ion-avatar>
         <ion-label>{{ user.name }}</ion-label>
         <p>{{ user.description }}</p>
@@ -30,5 +49,4 @@
     <ion-label class="label">You don't have permissions</ion-label>
   </div>
   }
-
 </ion-content>

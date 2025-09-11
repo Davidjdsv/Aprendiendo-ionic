@@ -2,7 +2,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonAvatar, IonItemSliding, IonSearchbar } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonAvatar,
+  IonItemSliding,
+  IonSearchbar,
+  IonRefresher,
+  IonRefresherContent,
+} from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -13,26 +26,39 @@ import { map } from 'rxjs';
   templateUrl: './starwars.page.html',
   styleUrls: ['./starwars.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem, IonLabel, IonAvatar, IonItemSliding, IonSearchbar]
+  imports: [
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonAvatar,
+    IonItemSliding,
+    IonSearchbar,
+    IonRefresher,
+    IonRefresherContent,
+  ],
 })
 export class StarwarsPage implements OnInit {
-  
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   starWars: any[] = []; // Array para almacenar los datos de la API
   permisos!: boolean;
   searchText: any;
-  
-  
+
   ngOnInit() {
     this.permisos = true;
-    this.getStarWars().subscribe(res => {
+    this.getStarWars().subscribe((res) => {
       console.log(res);
       this.starWars = res; // Aloja los datos en la variable starWars en el array para luego ser recorrido
       this.searchText = this.starWars; // Almacena los datos en la variable searchText para luego ser filtrados
     });
   }
-  
+
   getStarWars() {
     //Obtiene la ruta a consultar a datos o a apis
     //pipe funciona para transformar los datos
@@ -47,13 +73,33 @@ export class StarwarsPage implements OnInit {
 
   foundStarWars(event: any) {
     const text = event.target.value;
-    if(text && text.trim() != ""){
+    if (text && text.trim() != '') {
       this.searchText = this.searchText.filter((user: any) => {
         return user.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
-      })
+      });
     } else {
       this.searchText = [...this.starWars];
     }
   }
 
+  /**
+   * Método que se ejecuta cuando el usuario hace pull-to-refresh
+   * @param event - Evento del refresher que contiene el método complete()
+   */
+  handleRefresh(event: any) {
+    console.log('Iniciando refresh de datos Star Wars...');
+
+    // Simular un delay de carga (opcional, para mostrar la animación)
+    setTimeout(() => {
+      // Recargar los datos desde el JSON
+      this.getStarWars().subscribe((res) => {
+        console.log('Datos refrescados:', res);
+        this.starWars = res; // Actualizar el array principal
+        this.searchText = this.starWars; // Resetear el filtro de búsqueda
+
+        // IMPORTANTE: Llamar a complete() para ocultar el refresher
+        event.target.complete();
+      });
+    }, 1000); // Delay de 1 segundo para mostrar la animación
+  }
 }
