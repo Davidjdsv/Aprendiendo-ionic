@@ -25,6 +25,7 @@ ion-card img {
     height: 180px;
     /* ajusta a tu gusto (160–220px suele ir bien) */
     object-fit: cover;
+    border-radius: 12px 12px 0 0;
     /* recorta sin deformar */
     display: block;
 }
