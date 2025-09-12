@@ -24,6 +24,7 @@ export class AppComponent {
     { title: 'Products', url: '/products', icon: 'cart' },
     { title: 'Star Wars', url: '/starwars', icon: 'star' },
     { title: 'Countries', url: '/countries', icon: 'globe' },
+    { title: 'Calculadora', url: '/calculadora', icon: 'calculator' },
     { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'Dark Mode', url: '/toggle-dark-mode', icon: 'moon' },
   ];
