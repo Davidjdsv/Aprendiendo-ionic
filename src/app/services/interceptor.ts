@@ -10,8 +10,19 @@ export class Interceptor implements HttpInterceptor {
   
   constructor(private router: Router) { }
 
-  // Método obligatorio para HttpInterceptor
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  // * Método obligatorio para HttpInterceptor
+  intercept<T>(req: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    const token = localStorage.getItem('token');
+    console.log("Pasamos por el interceptor", token);
+
+    if(!token){
+      next.handle(req);
+    }
+
+    const reqHeader = req.clone({
+      headers: req.headers.set("Authorization", "Bearer " + token).set("client", "app")
+    });
     // Aquí puedes agregar lógica para modificar las requests
     // Por ejemplo: añadir headers de autenticación, logging, etc.
     
