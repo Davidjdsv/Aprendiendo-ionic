@@ -27,7 +27,8 @@ export class AppComponent {
     { title: 'Countries', url: '/countries', icon: 'globe' },
     { title: 'Calculadora', url: '/calculadora', icon: 'calculator' },
     { title: 'Login', url: '/login', icon: 'log-in' },
-    { title: 'Dark Mode', url: '/toggle-dark-mode', icon: 'moon' },
+
+    
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
