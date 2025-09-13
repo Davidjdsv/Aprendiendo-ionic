@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,14 @@ export class Interceptor implements HttpInterceptor {
     const reqHeader = req.clone({
       headers: req.headers.set("Authorization", "Bearer " + token).set("client", "app")
     });
-    // Aquí puedes agregar lógica para modificar las requests
-    // Por ejemplo: añadir headers de autenticación, logging, etc.
     
-    console.log('Request intercepted:', req.url);
-    
-    // Continúa con la request original
-    return next.handle(req);
+    return next.handle(reqHeader).pipe(
+      map((event: HttpEvent<any>) => {
+        if(event instanceof HttpResponse){
+          console.log("Evento interceptado", event);
+        }
+        return event;
+      }),
+    )
   }
 }
