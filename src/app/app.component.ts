@@ -26,8 +26,8 @@ export class AppComponent {
     { title: 'Star Wars', url: '/starwars', icon: 'star' },
     { title: 'Countries', url: '/countries', icon: 'globe' },
     { title: 'Calculadora', url: '/calculadora', icon: 'calculator' },
+    { title: 'Pokemon', url: '/pokemon', icon: 'game-controller'},
     { title: 'Login', url: '/login', icon: 'log-in' },
-
     
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

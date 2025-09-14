@@ -36,6 +36,10 @@ export const routes: Routes = [
   },  {
     path: 'calculadora',
     loadComponent: () => import('./calculadora/calculadora.page').then( m => m.CalculadoraPage)
+  },
+  {
+    path: 'pokemon',
+    loadComponent: () => import('./pokemon/pokemon.page').then( m => m.PokemonPage)
   }
 
 
