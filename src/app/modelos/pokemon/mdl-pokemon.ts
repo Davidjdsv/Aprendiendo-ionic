@@ -43,6 +43,7 @@ export interface Pokemon {
  * Interface para item de la lista. Esta es la dirección URL de la API
  */
 export interface PokemonListItem {
+    id: number;
     name: string;
     url: string;
 }
