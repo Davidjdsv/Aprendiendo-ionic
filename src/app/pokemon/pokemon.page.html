@@ -14,12 +14,14 @@
   <!-- Lista de pokémon -->
   <ion-grid>
     @if(!loading){
-      @for (pokemon of pokemonList; track pokemon.name) {
+      @for (pokemon of pokemonList; track pokemon) {
       <ion-row>
         <ion-col size="12" size-sm="6" size-md="4">
           <ion-card [routerLink]="['/pokemon-selected', pokemon.id]" button>
             <ion-card-header>
               <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
+              <!-- Debugging temporal: mostrar el ID -->
+              <ion-card-subtitle>Pokédex #{{ pokemon.id }}</ion-card-subtitle>
             </ion-card-header>
           </ion-card>
         </ion-col>

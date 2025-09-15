@@ -24,8 +24,6 @@ export class PokemonPage implements OnInit {
 
   ngOnInit() {
     this.loadPokemonList();
-    console.log(this.pokemonList);
-    this.pokemonList
   }
 
   loadPokemonList(){
@@ -33,6 +31,9 @@ export class PokemonPage implements OnInit {
     this.pokemonService.getPokemonList().subscribe({
       next: (response) => {
         this.pokemonList = response.results;
+        // Debugging: verificar que cada pokémon tenga ID
+        console.log('Pokemon list cargada:', this.pokemonList);
+        console.log('Primer pokemon:', this.pokemonList[0]);
         this.loading = false;
       }, error: (err) => {
         console.error('Error loading Pokémon list:', err);
