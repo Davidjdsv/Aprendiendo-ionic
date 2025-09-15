@@ -12,17 +12,19 @@
   </div>
 
   <!-- Lista de pokémon -->
-  <ion-grid *ngIf="!loading">
-    @for (pokemon of pokemonList; track pokemon.name) {
-    <ion-row>
-      <ion-col size="12" size-sm="6" size-md="4">
-        <ion-card (click)="selectPokemon(pokemon)" button>
-          <ion-card-header>
-            <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  <ion-grid>
+    @if(!loading){
+      @for (pokemon of pokemonList; track pokemon.name) {
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="4">
+          <ion-card (click)="selectPokemon(pokemon)" button>
+            <ion-card-header>
+              <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      }
     }
   </ion-grid>
 

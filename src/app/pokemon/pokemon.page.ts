@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonGrid, IonRow, IonCol, IonSpinner, IonButton } from '@ionic/angular/standalone';
 import { ServicePokemon } from '../services/pokemon/service-pokemon';
 import { PokemonListItem, Pokemon } from '../modelos/pokemon/mdl-pokemon';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon',
@@ -50,6 +51,22 @@ export class PokemonPage implements OnInit {
       },
       error: (err) => console.error('Error cargando detalle:', err),
     });
+  }
+
+  //* Método mejorado transformando datos de la api
+  getFormattedPokeAPI(name: string){
+    return this.pokemonService.getPokemon(name).pipe(
+      map(pokemon => ({
+        id: pokemon.id,
+        name: pokemon.name.toUpperCase(),
+        types: pokemon.types.map(type => type.type.name.toUpperCase()),
+        stats: pokemon.stats.map(stat => ({
+          name: stat.stat.name.toUpperCase(),
+          value: stat.base_stat
+        })),
+        sprites: pokemon.sprites
+      }))
+    )
   }
 
   // Método para establecer el sprite por defecto
