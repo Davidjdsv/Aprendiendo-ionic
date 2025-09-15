@@ -19,6 +19,7 @@ export class PokemonPage implements OnInit {
   selected: Pokemon | null = null; // instancia la interface de mdl-pokemon.ts
   loading: boolean = false;
   currentSprite: string = ''; // Para controlar qué sprite mostrar
+  id: string | null = null;
 
   constructor(private pokemonService: ServicePokemon) { }
 
