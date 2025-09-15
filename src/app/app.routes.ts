@@ -45,7 +45,9 @@ export const routes: Routes = [
   {
     path: 'pokemon-selected/:id',
     loadComponent: () => import('./pokemon-selected/pokemon-selected.page').then( m => m.PokemonSelectedPage)
-  }
-
-
+  },
+  {
+    path: 'infinite-scroll',
+    loadComponent: () => import('./components/infinity-scroll/infinity-scroll.component').then( m => m.InfinityScrollComponent)
+  },
 ];
