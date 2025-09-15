@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>Pokemon Selected</ion-title>
+    <ion-title> Pokémon Selected </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
   <ion-card *ngIf="selected">
     <ion-card-header>
       <ion-card-title>{{ selected.name | uppercase }}</ion-card-title>
-      <ion-card-subtitle>#{{ selected.id }}</ion-card-subtitle>
+      <ion-card-subtitle>Pokédex#{{ selected.id }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <div class="pokemon-image">
@@ -29,7 +29,7 @@
       </div>
 
       <!-- Botones para cambiar entre sprites -->
-      @if(selected.sprites?.versions?.['generation-v']?.['black-white']?.animated){
+      @if(selected.sprites.versions && selected.sprites.versions['generation-v'] && selected.sprites.versions['generation-v']['black-white'] && selected.sprites.versions['generation-v']['black-white'].animated){
       <div class="sprite-options">
         <ion-button
           fill="outline"
