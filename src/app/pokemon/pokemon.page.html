@@ -5,9 +5,52 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Pokemon</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner></ion-spinner>
+    <p>Cargando pokémon...</p>
+  </div>
+
+  <!-- Lista de pokémon -->
+  <ion-grid *ngIf="!loading">
+    @for (pokemon of pokemonList; track pokemon.name) {
+    <ion-row>
+      <ion-col size="12" size-sm="6" size-md="4">
+        <ion-card (click)="showDetailsPokemon(pokemon.name)" button>
+          <ion-card-header>
+            <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    }
+  </ion-grid>
+
+  <!-- Detalle del pokémon seleccionado -->
+  <ion-card *ngIf="selected">
+    <ion-card-header>
+      <ion-card-title>{{ selected.name | uppercase }}</ion-card-title>
+      <ion-card-subtitle>#{{ selected.id }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="pokemon-image">
+        <img *ngIf="selected.sprites?.front_default" 
+            [src]="selected.sprites.front_default"
+            [alt]="selected.name" />
+      </div>
+      <div class="pokemon-details">
+        <p><strong>Altura:</strong> {{ selected.height / 10 }} m</p>
+        <p><strong>Peso:</strong> {{ selected.weight / 10 }} kg</p>
+        <p><strong>Experiencia base:</strong> {{ selected.base_experience }}</p>
+        
+        <!-- Tipos -->
+        <div class="types" *ngIf="selected.types">
+          <strong>Tipos:</strong>
+          <span *ngFor="let typeInfo of selected.types; let last = last" class="type-badge">
+            {{ typeInfo.type.name | uppercase }}<span *ngIf="!last">, </span>
+          </span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
