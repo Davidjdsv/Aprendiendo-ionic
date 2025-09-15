@@ -14,7 +14,7 @@ import { PokemonListItem, Pokemon } from '../modelos/pokemon/mdl-pokemon';
 })
 export class PokemonPage implements OnInit {
   pokemonList: PokemonListItem[] = [];
-  selected: Pokemon | null = null;
+  selected: Pokemon | null = null; // instancia la interface de mdl-pokemon.ts
   loading: boolean = false;
   currentSprite: string = ''; // Para controlar qué sprite mostrar
 
@@ -38,10 +38,11 @@ export class PokemonPage implements OnInit {
     });
   }
 
-  showDetailsPokemon(name: string) {
+  // Método para seleccionar un Pokémon
+  selectPokemon(pokemon: PokemonListItem) {
     this.selected = null;
     this.currentSprite = ''; // Resetear sprite actual
-    this.pokemonService.getPokemon(name).subscribe({
+    this.pokemonService.getPokemon(pokemon.name).subscribe({
       next: (pokemon) => {
         this.selected = pokemon;
         // Establecer sprite por defecto (animado si existe)
