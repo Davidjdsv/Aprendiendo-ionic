@@ -1,5 +1,9 @@
 // Interface para un Pokémon completo
-export interface MdlPokemon {
+/**
+ * Interface para un Pokémon completo
+ */
+// Esto es como la informacion que viene de la API pero ya estructurando lo que queremos sacar de informacion
+export interface Pokemon {
     id: number;
     name: string;
     height: number;
@@ -10,6 +14,20 @@ export interface MdlPokemon {
         front_shiny: string | null;
         back_default: string | null;
         back_shiny: string | null;
+        versions: {
+            'generation-v': {
+                'black-white': {
+                    animated: {
+                        front_default: string | null;
+                        front_shiny: string | null;
+                        back_default: string | null;
+                        back_shiny: string | null;
+                    };
+                    front_default: string | null;
+                    front_shiny: string | null;
+                };
+            };
+        };
         other: {
             'official-artwork': {
                 front_default: string | null;
@@ -21,7 +39,9 @@ export interface MdlPokemon {
     stats: PokemonStat[];
 }
 
-// Interface para item de la lista
+/**
+ * Interface para item de la lista. Esta es la dirección URL de la API
+ */
 export interface PokemonListItem {
     name: string;
     url: string;
@@ -36,6 +56,9 @@ export interface PokemonListResponse {
 }
 
 // Interfaces auxiliares
+/**
+ * Interface para tipos de un Pokémon.
+ */
 export interface PokemonType {
     slot: number;
     type: {
@@ -44,6 +67,9 @@ export interface PokemonType {
     };
 }
 
+/**
+ * Interface para estadísticas de un Pokémon.
+ */
 export interface PokemonStat {
     base_stat: number;
     effort: number;
@@ -52,3 +78,5 @@ export interface PokemonStat {
         url: string;
     };
 }
+
+// Toda esta info se va e importa al service-pokemon.ts ->

@@ -34,10 +34,44 @@
     </ion-card-header>
     <ion-card-content>
       <div class="pokemon-image">
-        <img *ngIf="selected.sprites?.front_default" 
-            [src]="selected.sprites.front_default"
-            [alt]="selected.name" />
+        <!-- Sprite controlado por la variable currentSprite -->
+        <img 
+          *ngIf="currentSprite" 
+          [src]="currentSprite"
+          alt="{{ selected.name }}"
+          class="pokemon-sprite" />
+        
+        <!-- Mensaje si no hay sprite disponible -->
+        <div *ngIf="!currentSprite" class="no-sprite">
+          <p>Sin imagen disponible</p>
+        </div>
       </div>
+      
+      <!-- Botones para cambiar entre sprites -->
+      <div class="sprite-options" *ngIf="selected.sprites?.versions?.['generation-v']?.['black-white']?.animated">
+        <ion-button 
+          fill="outline" 
+          size="small" 
+          (click)="showAnimatedSprite('front_default')">
+          Normal Animado
+        </ion-button>
+        
+        <ion-button 
+          fill="outline" 
+          size="small" 
+          (click)="showAnimatedSprite('front_shiny')"
+          *ngIf="selected.sprites.versions['generation-v']['black-white'].animated.front_shiny">
+          Shiny Animado
+        </ion-button>
+        
+        <ion-button 
+          fill="outline" 
+          size="small" 
+          (click)="showAnimatedSprite('back_default')">
+          Espalda Animado
+        </ion-button>
+      </div>
+
       <div class="pokemon-details">
         <p><strong>Altura:</strong> {{ selected.height / 10 }} m</p>
         <p><strong>Peso:</strong> {{ selected.weight / 10 }} kg</p>
