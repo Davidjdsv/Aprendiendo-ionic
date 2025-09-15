@@ -4,6 +4,7 @@ import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonN
 import { addIcons } from 'ionicons';
 import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { SharedMenuComponent } from './components/shared-menu/shared-menu.component';
 import { Interceptor } from './services/interceptor';
 import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
 import { inject } from '@angular/core/primitives/di';
@@ -13,7 +14,7 @@ import { inject } from '@angular/core/primitives/di';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, HttpClientModule],
+  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, HttpClientModule, SharedMenuComponent],
   providers: [HttpClient, Interceptor, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],  
 })
 

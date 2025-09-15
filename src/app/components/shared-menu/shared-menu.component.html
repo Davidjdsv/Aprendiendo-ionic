@@ -1,0 +1,15 @@
+<!-- Paso 3: Template del header reutilizable -->
+<ion-header [translucent]="true">
+  <ion-toolbar [color]="color">
+    <!-- Solo mostrar el botón si showMenu es true -->
+    @if(showMenu) {
+      <ion-menu-button slot="start" color="light">
+      </ion-menu-button>
+    } @empty {
+      <ion-title>{{ title }}</ion-title>
+    }
+
+    <!-- El título viene del Input -->
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
