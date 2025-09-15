@@ -1,0 +1,30 @@
+.pokemon-image{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 20%;
+        height: 20%;
+        object-fit: contain;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+
+.sprite-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-details{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    padding: 20px;
+    margin: 20px;
+}
