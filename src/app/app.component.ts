@@ -29,6 +29,7 @@ export class AppComponent {
     { title: 'Pokemon', url: '/pokemon', icon: 'game-controller'},
     { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'Infinite Scroll', url: '/infinite-scroll', icon: 'infinite' },
+    { title: 'Father-and-son', url: '/father-and-son', icon: 'football' },
     
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
