@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { IonContent, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 
 
@@ -10,7 +10,7 @@ import { SharedMenuComponent } from '../components/shared-menu/shared-menu.compo
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, SharedMenuComponent]
+  imports: [IonContent, CommonModule, FormsModule, IonGrid, IonRow, IonCol, SharedMenuComponent]
 })
 export class ProductsPage implements OnInit {
 

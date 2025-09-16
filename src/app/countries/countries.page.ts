@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
@@ -13,7 +13,7 @@ import { ToastController, AlertController } from '@ionic/angular';
   templateUrl: './countries.page.html',
   styleUrls: ['./countries.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton, RouterLink, SharedMenuComponent]
+  imports: [IonContent, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton, RouterLink, SharedMenuComponent]
 })
 export class CountriesPage implements OnInit {
 

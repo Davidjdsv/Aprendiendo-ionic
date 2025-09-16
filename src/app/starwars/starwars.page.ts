@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
   IonList,
   IonItem,
   IonLabel,
@@ -30,9 +27,6 @@ import { map } from 'rxjs';
   standalone: true,
   imports: [
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     SharedMenuComponent,
     CommonModule,
     FormsModule,
