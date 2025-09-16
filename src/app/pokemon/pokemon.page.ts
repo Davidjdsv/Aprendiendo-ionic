@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonSpinner, IonMenuButton } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonSpinner } from '@ionic/angular/standalone';
+import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 import { RouterLink } from '@angular/router';
 import { ServicePokemon } from '../services/pokemon/service-pokemon';
 import { PokemonListItem, Pokemon } from '../modelos/pokemon/mdl-pokemon';
@@ -12,7 +13,7 @@ import { map } from 'rxjs';
   templateUrl: './pokemon.page.html',
   styleUrls: ['./pokemon.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonSpinner, CommonModule, FormsModule, RouterLink, IonMenuButton]
+  imports: [IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonSpinner, CommonModule, FormsModule, RouterLink, SharedMenuComponent]
 })
 export class PokemonPage implements OnInit {
   pokemonList: PokemonListItem[] = [];
