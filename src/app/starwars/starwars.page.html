@@ -1,21 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Starwars</ion-title>
-    <ion-searchbar
-      [debounce]="500"
-      aria-placeholder="Search customers"
-      (ionInput)="foundStarWars($event)"
-      placeholder="Search starwars"
-    ></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+<app-shared-menu
+  [showMenu]="true"
+  [color]="'primary'"
+  [title]="'Starwars'">
+</app-shared-menu>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Starwars</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-searchbar
+    [debounce]="500"
+    aria-placeholder="Search customers"
+    (ionInput)="foundStarWars($event)"
+    placeholder="Search starwars"
+  ></ion-searchbar>
 
   <!-- Componente ion-refresher para pull-to-refresh -->
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">

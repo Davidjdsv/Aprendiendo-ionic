@@ -13,6 +13,7 @@ import {
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/angular/standalone';
+import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';  
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
@@ -37,6 +38,7 @@ import { RouterLink } from '@angular/router';
     FormsModule,
     RouterLink,
     IonButton,
+    SharedMenuComponent,
   ],
 })
 export class CityPage implements OnInit {

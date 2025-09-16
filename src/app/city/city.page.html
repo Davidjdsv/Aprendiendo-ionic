@@ -1,15 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{ name }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-shared-menu [title]="'City'" [showMenu]="true" [color]="'primary'"></app-shared-menu>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ name }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <div>
     <ion-button [routerLink]="['/countries']">Return to countries</ion-button>
   </div>

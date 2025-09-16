@@ -16,6 +16,7 @@ import {
   IonRefresher,
   IonRefresherContent,
 } from '@ionic/angular/standalone';
+import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
@@ -32,6 +33,7 @@ import { map } from 'rxjs';
     IonHeader,
     IonTitle,
     IonToolbar,
+    SharedMenuComponent,
     CommonModule,
     FormsModule,
     IonList,

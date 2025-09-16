@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonButton, IonItem, IonLabel } from '@ionic/angular/standalone';
 import { Calculadora } from '../services/calculadora'; // Importar el servicio para ser usado
+import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 
 @Component({
   selector: 'app-calculadora',
   templateUrl: './calculadora.page.html',
   styleUrls: ['./calculadora.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonItem, IonLabel]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonInput, IonButton, IonItem, IonLabel, SharedMenuComponent]
 })
 export class CalculadoraPage implements OnInit {
 

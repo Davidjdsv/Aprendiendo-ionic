@@ -1,17 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Customers</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-shared-menu
+  [showMenu]="true"
+  [color]="'primary'"
+  [title]="'Customers'">
+</app-shared-menu>
 
 <!-- Solo se puede un elemento ion-content por archivo html-->
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Customers</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
+<ion-content [fullscreen]="true">  
   <div>
     <ion-button [routerLink]="['/home']">Go to home</ion-button>
   </div>
