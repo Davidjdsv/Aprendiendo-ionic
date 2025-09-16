@@ -1,0 +1,41 @@
+/* father-and-son.page.scss (o el scss de tu componente/página) */
+
+ion-content {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* mitad y mitad */
+    gap: 16px;
+    height: 100%;
+    /* ocupa todo el alto disponible */
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.father,
+.son {
+    display: flex;
+    /* para estirar la card */
+}
+
+ion-card {
+    width: 100%;
+    height: fit-content;
+    /* la card llena su columna */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive: en móviles apila */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        /* una sola columna */
+    }
+}
