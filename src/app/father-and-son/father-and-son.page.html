@@ -8,21 +8,30 @@
   <div class="container">
     <div class="father">
       <ion-card>
-        <ion-card-header>
+        <ion-card-header color="primary">
           <ion-card-title>Father</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          I am the father
+          <app-father-component>
+            
+          </app-father-component>
         </ion-card-content>
       </ion-card>
     </div>
     <div class="son">
       <ion-card>
-        <ion-card-header>
+        <ion-card-header color="warning">
           <ion-card-title>Son</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          I am the son
+          <app-child-component
+            id="1116281626"
+            name="Jhoan"
+            apellido="Sinisterra"
+            age="26"
+            role="programmer">
+            <!-- Contenido cargado desde el componente hijo -->
+          </app-child-component>
         </ion-card-content>
       </ion-card>
     </div>
