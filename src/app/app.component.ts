@@ -30,6 +30,7 @@ export class AppComponent {
     { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'Infinite Scroll', url: '/infinite-scroll', icon: 'infinite' },
     { title: 'Father-and-son', url: '/father-and-son', icon: 'football' },
+    { title: 'Components', url: '/test-components', icon: 'library' }
     
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

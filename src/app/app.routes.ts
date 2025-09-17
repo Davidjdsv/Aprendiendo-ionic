@@ -49,13 +49,18 @@ export const routes: Routes = [
   {
     path: 'infinite-scroll',
     loadComponent: () => import('./components/infinity-scroll/infinity-scroll.component').then( m => m.InfinityScrollComponent)
-  },  {
+  },
+  {
     path: 'father-and-son',
     loadComponent: () => import('./father-and-son/father-and-son.page').then( m => m.FatherAndSonPage)
   },
   {
     path: 'father-and-son',
     loadComponent: () => import('./father-and-son/father-and-son.page').then( m => m.FatherAndSonPage)
+  },
+  {
+    path: 'test-components',
+    loadComponent: () => import('./test-components/test-components.page').then( m => m.TestComponentsPage)
   },
 
 ];
