@@ -1,3 +1,8 @@
 <div class="container">
+  <h1> {{title}} </h1>
   <p>Hola, soy el padre</p>
+
+  <ion-input [(ngModel)]="title"></ion-input>
+
+  <app-child [title]="title"></app-child><!--Title es atributo del hijo pero el padre le envia el valor-->
 </div>
