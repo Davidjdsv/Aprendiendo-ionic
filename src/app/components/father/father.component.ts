@@ -15,6 +15,7 @@ export class FatherComponent  implements OnInit {
   apellido!: string
   numero_documento!: string
   edad!: string
+  texto!: string
 
   constructor() { }
 

@@ -1,9 +1,8 @@
 <div class="container">
   <h1>Hijo: {{title}} </h1>
   <h2>Datos enviados desde el padre al hijo</h2>
-
   <ion-label color="primary">
-    Mi nombre es {{nombre}}
+    Mi nombre es {{nombre }}
   </ion-label>
     <ion-label color="danger">
     Mi apellido es {{apellido}}
@@ -14,5 +13,7 @@
     <ion-label color="dark">
     Mi edad es {{edad}}
   </ion-label>
+
+  <ion-input label="Nombre" label-placement="floating" fill="outline" (keyup)="emitTitleChange()" [(ngModel)]="texto"></ion-input>
 
 </div>

@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Padre: {{title}} </h1>
   <h2>Hola, soy el padre</h2>
+  <p>Texto recibido del hijo: {{ texto }}</p>
 
 
   <!-- [(ngModel)] envia los datos puesto del formulario y se necesita importar formsModule-->
@@ -18,5 +19,6 @@
   [apellido]="apellido"
   [numero_documento]="numero_documento"
   [edad]="edad"
+  (textChange)="texto = $event"
   ></app-child>
 </div>
