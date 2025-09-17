@@ -1,8 +1,22 @@
 <div class="container">
-  <h1> {{title}} </h1>
-  <p>Hola, soy el padre</p>
+  <h1>Padre: {{title}} </h1>
+  <h2>Hola, soy el padre</h2>
 
-  <ion-input [(ngModel)]="title"></ion-input>
 
-  <app-child [title]="title"></app-child><!--Title es atributo del hijo pero el padre le envia el valor-->
+  <!-- [(ngModel)] envia los datos puesto del formulario y se necesita importar formsModule-->
+  <ion-input label="Nombre" label-placement="floating" fill="outline" [(ngModel)]="nombre"></ion-input>
+  <ion-input label="Apellido" label-placement="floating" fill="outline" [(ngModel)]="apellido"></ion-input>
+  <ion-input label="Número documento" label-placement="floating" fill="outline" [(ngModel)]="numero_documento"></ion-input>
+  <ion-input label="Edad" label-placement="floating" fill="outline" [(ngModel)]="edad"></ion-input>
+
+  
+
+  <!-- El componente hijo RECIBE datos del padre -->
+  <app-child
+  [title]="title"
+  [nombre]="nombre"
+  [apellido]="apellido"
+  [numero_documento]="numero_documento"
+  [edad]="edad"
+  ></app-child>
 </div>
