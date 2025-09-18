@@ -1,3 +1,6 @@
-<ion-button (click)="toggleDarkMode()">
-  <ion-icon name="moon"></ion-icon>
-</ion-button>
+<ion-toggle
+  [(ngModel)]="paletteToggle"
+  (ionChange)="toggleChange($event)"
+  justify="space-between"
+  >Dark Mode</ion-toggle
+>
