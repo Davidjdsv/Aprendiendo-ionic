@@ -1,4 +1,5 @@
 // models/rm-character.ts
+// * DIRECCIÓN DE LA API
 export interface RmRef {
     name: string;
     url: string; // puede venir vacío en algunos casos
@@ -8,6 +9,7 @@ export interface RmRef {
 export type RmStatus = 'Alive' | 'Dead' | 'unknown';
 export type RmGender = 'Female' | 'Male' | 'Genderless' | 'unknown';
 
+// * DATOS A OBTENER DE LA API
 export interface RickAndMorty {
     id: number;
     name: string;
