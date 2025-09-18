@@ -29,6 +29,7 @@ export class AppComponent {
     { title: 'Infinite Scroll', url: '/infinite-scroll', icon: 'infinite' },
     { title: 'Father-and-son', url: '/father-and-son', icon: 'football' },
     { title: 'Components', url: '/test-components', icon: 'library' },
+    { title: 'Rick & Morty-API', url: '/rick-and-morty', icon: 'code' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

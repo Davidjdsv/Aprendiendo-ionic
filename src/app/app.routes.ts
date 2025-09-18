@@ -65,6 +65,10 @@ export const routes: Routes = [
     path: 'settings',
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
   },
+  {
+    path: 'rick-and-morty',
+    loadComponent: () => import('./rick-and-morty/rick-and-morty.page').then( m => m.RickAndMortyPage)
+  },
 
   
 ];
