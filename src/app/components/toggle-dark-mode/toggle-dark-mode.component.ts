@@ -6,6 +6,7 @@ import { IonToggle } from '@ionic/angular/standalone'
   selector: 'app-toggle-dark-mode',
   templateUrl: './toggle-dark-mode.component.html',
   styleUrls: ['./toggle-dark-mode.component.scss'],
+  standalone: true,
   imports: [ IonToggle, FormsModule]
 })
 export class ToggleDarkModeComponent implements OnInit {
@@ -13,9 +14,7 @@ export class ToggleDarkModeComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    this.initDarkMode();
-  }
+  ngOnInit() {}
 
   toggleDarkMode() {
     document.body.classList.toggle('dark');

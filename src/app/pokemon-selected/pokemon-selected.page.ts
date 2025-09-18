@@ -5,14 +5,15 @@ import { ServicePokemon } from '../services/pokemon/service-pokemon';
 import { Pokemon } from '../modelos/pokemon/mdl-pokemon';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
+import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-pokemon-selected',
   templateUrl: './pokemon-selected.page.html',
   styleUrls: ['./pokemon-selected.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton]
+  imports: [IonContent, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, SharedMenuComponent]
 })
 export class PokemonSelectedPage implements OnInit {
 

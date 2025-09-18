@@ -1,0 +1,14 @@
+<app-shared-menu
+  [showMenu]="true"
+  [color]="'primary'"
+  [title]="'Settings'">
+</app-shared-menu>
+
+<ion-content [fullscreen]="true">
+  <ion-list-header>Appereance</ion-list-header>
+    <ion-list inset="true">
+      <ion-item>
+        <app-toggle-dark-mode/>
+      </ion-item>
+    </ion-list>
+</ion-content>
