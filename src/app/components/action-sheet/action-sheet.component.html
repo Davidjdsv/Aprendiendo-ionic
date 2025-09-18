@@ -1,9 +1,9 @@
-<ion-button id="open-action-sheet">Open</ion-button>
+<!-- <ion-button id="{{id}}">Open</ion-button> -->
 <ion-action-sheet
 aria-labelledby="action-buttons"
-  trigger="open-action-sheet"
-  header="Test buttons"
-  subHeader="Click on any button below to see action"
+  trigger="{{ id }}"
+  header="{{ header }}"
+  subHeader="{{ subHeader }}"
   [buttons]="actionSheetButtons"
   (didDismiss)="logResult($event)"
 ></ion-action-sheet>

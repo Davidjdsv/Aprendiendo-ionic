@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { IonButton, IonActionSheet } from '@ionic/angular/standalone';
+import { Component, OnInit, Input } from '@angular/core';
+import { IonActionSheet } from '@ionic/angular/standalone';
 import type { OverlayEventDetail } from '@ionic/core'
 
 @Component({
   selector: 'app-action-sheet',
   templateUrl: './action-sheet.component.html',
   styleUrls: ['./action-sheet.component.scss'],
-  imports: [IonButton, IonActionSheet],
+  imports: [IonActionSheet],
 })
 export class ActionSheetComponent implements OnInit {
+  @Input() id?: string
+  @Input() header?: string
+  @Input() subHeader?: string
+
+
   constructor() {}
 
   ngOnInit() {}

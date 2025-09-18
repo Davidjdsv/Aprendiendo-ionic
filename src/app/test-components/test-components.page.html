@@ -2,14 +2,55 @@
   [showMenu]="true"
   [color]="'primary'"
   [title]="'Test components'"
-  >
+>
 </app-shared-menu>
 
 <ion-content [fullscreen]="true">
-  <div class="grid-container">
-    <div class="container">
-      <h1>Hola, este es el componente de <strong>Action-sheet</strong></h1>
-      <app-action-sheet></app-action-sheet>
-    </div>
-  </div>
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col>
+        <h1>Hola, este es el componente de <strong>Action-sheet 1</strong></h1>
+        <ion-button [id]="'actionSheet1Id'">Abrir Action Sheet 1</ion-button>
+
+        <app-action-sheet
+          [id]="'actionSheet1Id'"
+          [header]="'Test buttons 1'"
+          [subHeader]="'Click on any button below to see action'"
+        >
+        </app-action-sheet>
+      </ion-col>
+
+      <ion-col>
+        <h1>Hola, este es el componente de <strong>Action-sheet 2</strong></h1>
+        <ion-button [id]="'actionSheet2Id'">Abrir Action Sheet 2</ion-button>
+
+        <app-action-sheet
+          [id]="'actionSheet2Id'"
+          [header]="'titulo de ejemplo'"
+          [subHeader]="'Subtitulo del action sheet'"
+        >
+        </app-action-sheet>
+      </ion-col>
+
+      <ion-col >
+        <ion-chip>
+          <ion-avatar>
+            <img
+              alt="Silhouette of a person's head"
+              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            />
+          </ion-avatar>
+          <ion-label>Avatar Chip</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+
+        <ion-chip>
+          <ion-icon name="pin" color="primary"></ion-icon>
+          <ion-label>Icon Chip</ion-label>
+          <ion-icon name="close"></ion-icon>
+        </ion-chip>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
