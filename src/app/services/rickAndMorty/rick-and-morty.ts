@@ -13,7 +13,7 @@ export class RickAndMorty {
 
   apiurl = environment.api
 
-  getRmCharactersAPI(): Observable<RickAndMortyMdl>{
-    return this.http.get<RickAndMortyMdl>(`${this.apiurl}character`)
+  getRmCharactersAPI(): Observable<any>{
+    return this.http.get<any>(`${this.apiurl}character`)
   }
 }
