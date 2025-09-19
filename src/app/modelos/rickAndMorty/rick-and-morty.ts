@@ -10,7 +10,7 @@ export type RmStatus = 'Alive' | 'Dead' | 'unknown';
 export type RmGender = 'Female' | 'Male' | 'Genderless' | 'unknown';
 
 // * DATOS A OBTENER DE LA API
-export interface RickAndMorty {
+export interface RickAndMortyMdl {
     id: number;
     name: string;
     status: RmStatus;
@@ -20,5 +20,24 @@ export interface RickAndMorty {
     image: string; // URL a la imagen
     origin: RmRef;
     location: RmRef;
-    // episode?: string[]; // si luego quieres, lo agregas
+    episode?: string[]; // array de URLs de episodios
+}
+
+// * RESPUESTA DE LA API (paginada)
+export interface RmApiResponse {
+    info: {
+        count: number;
+        pages: number;
+        next: string | null;
+        prev: string | null;
+    };
+    results: RickAndMortyMdl[];
+}
+
+// * INFORMACIÓN DE PAGINACIÓN
+export interface RmPageInfo {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
 }
