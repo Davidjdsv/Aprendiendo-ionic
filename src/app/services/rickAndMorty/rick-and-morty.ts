@@ -16,4 +16,8 @@ export class RickAndMorty {
   getRmCharactersAPI(): Observable<any>{
     return this.http.get<any>(`${this.apiurl}character`)
   }
+
+  getCharactersByPage(page: number): Observable<any>{
+    return this.http.get<any>(`${this.apiurl}character?page=${page}`)
+  }
 }
