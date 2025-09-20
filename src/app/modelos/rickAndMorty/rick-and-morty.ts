@@ -41,3 +41,5 @@ export interface RmPageInfo {
     next: string | null;
     prev: string | null;
 }
+
+// Interfaz RmApiLocation removida - no es necesaria ya que location es de tipo RmRef

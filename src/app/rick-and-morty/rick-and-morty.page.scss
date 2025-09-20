@@ -1,0 +1,36 @@
+// ✅ Cards con mismo tamaño independiente del contenido
+ion-card {
+    height: 450px;         // Altura fija para todas las cards
+    display: flex;         // Flexbox para organizar contenido interno
+    flex-direction: column; // Contenido en columna (img, header, content)
+    width: fit-content;
+    border-radius: 16px;
+}
+
+// ✅ Imagen centrada y ajustada a su tamaño natural
+ion-card > img {
+    display: block;        // Necesario para que funcione margin: auto
+    margin: 5px auto;      // Margen reducido (antes era 5px)
+    max-width: 90%;        // Reduce el ancho máximo (antes era calc(100% - 10px))
+    height: auto;          // Altura automática según proporción natural
+    max-height: 180px;     // Altura máxima para evitar imágenes muy grandes
+    object-fit: contain;   // Mantiene imagen completa sin recortar
+    border-radius: 8px;   // Bordes redondeados
+    flex-shrink: 0;        // Evita que la imagen se reduzca
+}
+
+// ✅ Header con altura controlada
+ion-card-header {
+    flex-grow: 1;         // Ocupa espacio disponible
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;        // Padding uniforme
+}
+
+// ✅ Content que se ajusta al espacio restante
+ion-card-content {
+    flex-shrink: 0;       // No se reduce
+    margin-top: auto;     // Se empuja hacia abajo
+    padding: 16px;        // Padding uniforme
+}

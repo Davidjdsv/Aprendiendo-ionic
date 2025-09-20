@@ -6,14 +6,44 @@
     <ion-row>
       @for(r of rmCharacters; track r.id; let i = $index){
       <ion-col size="12" size-sm="3">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title> Name: {{ r.name }}, id: {{ r.id }} </ion-card-title>
-            <ion-card-subtitle> location: {{ r.location }} </ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-          </ion-card-content>
-        </ion-card>
+        @if(r.name.includes("Rick")){
+          <ion-card color="primary">
+            <img src="{{ r.image }}" alt="character_rick_and_morty">
+            <ion-card-header>
+              <ion-card-title> Name: {{ r.name }}, id: {{ r.id }} </ion-card-title>
+              @if(r.status.includes("Alive")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="success"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              } @else if(r.status.includes("Dead")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="danger"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              } @else if(r.status.includes("unknown")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="tertiary"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              }
+              <ion-card-subtitle> location: {{ r.location }} <br> Status: {{ r.status }} </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label> Species: {{ r.species }} </ion-label><br>
+              <ion-label> Gender: {{ r.gender }} </ion-label>
+            </ion-card-content>
+          </ion-card>
+        } @else {
+          <ion-card color="warning">
+            <img src="{{ r.image }}" alt="character_rick_and_morty">
+            <ion-card-header>
+              <ion-card-title> Name: {{ r.name }}, id: {{ r.id }} </ion-card-title>
+              @if(r.status.includes("Alive")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="success"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              } @else if(r.status.includes("Dead")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="danger"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              } @else if(r.status.includes("unknown")){
+                <ion-card-subtitle> location: {{ r.location }} <br> Status:<ion-label color="tertiary"> {{ r.status }} </ion-label> </ion-card-subtitle>
+              }
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label> Species: {{ r.species }} </ion-label><br>
+              <ion-label> Gender: {{ r.gender }} </ion-label>
+            </ion-card-content>
+          </ion-card>
+        }
       </ion-col>
       }
     </ion-row>
