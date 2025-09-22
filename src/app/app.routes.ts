@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -55,19 +56,21 @@ export const routes: Routes = [
     loadComponent: () => import('./father-and-son/father-and-son.page').then( m => m.FatherAndSonPage)
   },
   {
-    path: 'father-and-son',
-    loadComponent: () => import('./father-and-son/father-and-son.page').then( m => m.FatherAndSonPage)
-  },
-  {
     path: 'test-components',
     loadComponent: () => import('./test-components/test-components.page').then( m => m.TestComponentsPage)
-  },  {
+  },
+  {
     path: 'settings',
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
   },
   {
     path: 'rick-and-morty',
+    canActivate: [authGuard],
     loadComponent: () => import('./rick-and-morty/rick-and-morty.page').then( m => m.RickAndMortyPage)
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./not-found/not-found.page').then( m => m.NotFoundPage)
   },
 
   
