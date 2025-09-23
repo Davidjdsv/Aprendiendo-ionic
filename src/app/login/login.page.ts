@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     console.log("token:", this.token);
-    this.authService.logIn()
+    this.authService.logIn("davidjdsv", "1234")
   }
 
   login() {

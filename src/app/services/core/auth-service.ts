@@ -8,7 +8,7 @@ import type { UsersMdl, UsersData } from 'src/app/modelos/users/users';
 })
 export class AuthService {
     isLoggedIn: boolean = false;
-    currentUser!: string;
+    currentUser: UsersMdl | null = null;
 
     constructor(private http: HttpClient) {}
 
@@ -20,12 +20,17 @@ export class AuthService {
       }
     }
 
-    logIn(username?: string, password?: string){
+    logIn(username: string, password?: string){
       return this.http.get<UsersData>('assets/users.json').pipe(
         map(res => res.data)
       ).subscribe({
         next: (res) => {
           console.log(res)
+          if(res.find(user => user.username === username && user.password === password)){
+            this.isLoggedIn = true
+            console.log("Estado del usuario: ", this.isLoggedIn)
+          }
+            console.log("Estado del usuario: ", this.isLoggedIn)
         }
       })
     }
