@@ -3,16 +3,19 @@
         {
             "id": "1",
             "username": "davidjdsv",
+            "password": "12345",
             "role": "Administrador"
         },
         {
             "id": "2",
             "username": "valentina_car",
+            "password": "12345",
             "role": "Gerente"
         },
         {
             "id": "3",
             "username": "Carlos",
+            "password": "12345",
             "role": "Cliente"
         }
     ]
