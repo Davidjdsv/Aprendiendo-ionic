@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "username": "davidjdsv",
+            "role": "Administrador"
+        },
+        {
+            "id": "2",
+            "username": "valentina_car",
+            "role": "Gerente"
+        },
+        {
+            "id": "3",
+            "username": "Carlos",
+            "role": "Cliente"
+        }
+    ]
+}
