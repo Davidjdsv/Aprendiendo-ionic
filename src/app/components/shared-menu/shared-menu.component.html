@@ -1,12 +1,16 @@
-<!-- Paso 3: Template del header reutilizable -->
 <ion-header [translucent]="true">
   <ion-toolbar [color]="color">
-    <!-- Solo mostrar el botón si showMenu es true -->
+    <!-- Contenido a la izquierda -->
     @if(showMenu) {
-      <ion-menu-button slot="start" color="light">
-      </ion-menu-button>
-      <!-- El título viene del Input -->
-      <ion-title>{{ title }}</ion-title>
+      <ion-menu-button slot="start" color="light"></ion-menu-button>
     }
+
+    <!-- Título centrado -->
+    <ion-title class="ion-text-center">{{ title }}</ion-title>
+
+    <!-- Avatar a la derecha -->
+    <ion-avatar slot="end" class="ion-padding">
+      <img src="" alt="user-image">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>

@@ -4,9 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/core/auth-service';
 import {
   IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonCardHeader,
   IonCardContent,
@@ -14,6 +11,8 @@ import {
   IonButton,
   IonInput,
   IonFooter,
+  IonAlert,
+  AlertController 
 } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
 
@@ -24,9 +23,6 @@ import { SharedMenuComponent } from '../components/shared-menu/shared-menu.compo
   standalone: true,
   imports: [
     IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
     CommonModule,
     FormsModule,
     SharedMenuComponent,
@@ -36,18 +32,46 @@ import { SharedMenuComponent } from '../components/shared-menu/shared-menu.compo
     IonCardTitle,
     IonInput,
     IonFooter,
-    IonButton
+    IonButton,
   ],
 })
 export class LoginV2Page implements OnInit {
   username!: string
   password!: string
+  message!: string
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private alertController: AlertController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   loginOnClick(username: string, password: string){
+    this.auth.logIn(username, password).subscribe({
+      next: (isSuccess) => {
+        if(isSuccess){
+          this.logMessage("Login exitoso", "Has ingresado al sistema!")
+        } else {
+          this.logMessage("Login invalido", "Credenciales ingresadas erróneas")
+        }
+      }
+    })
     
+    this.auth.currentUser = null
+  }
+
+  logOutOnClick(){
+    this.auth.logOut()
+    this.logMessage("Saliendo del sistema", "Vuelva pronto")
+  }
+
+  async logMessage(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['Ok'],
+    });
+
+    await alert.present();
   }
 }
