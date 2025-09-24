@@ -12,6 +12,7 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
+    // Método que toma el auth.guard que devuelve o true o false
     getAuthToken(): Observable <boolean>{
       if(this.isLoggedIn){
         return of(true)
@@ -20,6 +21,7 @@ export class AuthService {
       }
     }
 
+    // Método para verificar si las credenciales en la bd coinciden con las credenciales que el usuario ingresó
     logIn(username: string, password?: string){
       return this.http.get<UsersData>('assets/users.json').pipe(
         map(res => res.data)

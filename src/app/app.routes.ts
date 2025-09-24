@@ -69,9 +69,14 @@ export const routes: Routes = [
     loadComponent: () => import('./rick-and-morty/rick-and-morty.page').then( m => m.RickAndMortyPage)
   },
   {
+    path: 'login-v2',
+    loadComponent: () => import('./login-v2/login-v2.page').then( m => m.LoginV2Page)
+  },
+  {
     path: '**',
     loadComponent: () => import('./not-found/not-found.page').then( m => m.NotFoundPage)
   },
+
 
   
 ];
