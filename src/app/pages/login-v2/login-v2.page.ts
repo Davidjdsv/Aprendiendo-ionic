@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/core/auth-service';
 import {
@@ -11,7 +12,6 @@ import {
   IonButton,
   IonInput,
   IonFooter,
-  IonAlert,
   AlertController,
 } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
@@ -42,7 +42,8 @@ export class LoginV2Page implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -51,6 +52,7 @@ export class LoginV2Page implements OnInit {
     this.auth.logIn(username, password).subscribe({
       next: (isSuccess) => {
         if (isSuccess) {
+          this.router.navigate(['/home'])
           this.logMessage('Login exitoso', 'Has ingresado al sistema!');
         } else {
           this.logMessage('Login invalido', 'Credenciales ingresadas erróneas');

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor/interceptor';
 import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
+import { filter } from 'rxjs/operators';
 
 // El enrutador se encarga de cambiar de página
 @Component({
@@ -16,7 +18,9 @@ import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutlin
 })
 
 // Aqui se ponen las rutas de las nuevas páginas
-export class AppComponent {
+export class AppComponent implements OnInit {
+  // Variable que determina si estamos en la página de login
+  isLoginPage: boolean = false;
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Customers', url: '/customers', icon: 'people' },
@@ -34,7 +38,18 @@ export class AppComponent {
     { title: 'Settings', url: '/settings', icon: 'settings' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {
+
+  constructor(private router: Router) {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+  }
+
+  ngOnInit() {
+    // Escucha los cambios de ruta para determinar si estamos en login
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // Verifica si la URL actual es login-v2
+      this.isLoginPage = event.url === '/login-v2';
+    });
   }
 }

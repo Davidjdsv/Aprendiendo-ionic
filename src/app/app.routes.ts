@@ -4,11 +4,12 @@ import { authGuard } from './guards/auth-guard';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login-v2', // Ahora redirige al login como primera página
     pathMatch: 'full',
   },
   {
     path: 'home',
+    canActivate: [authGuard], // Protege la página home
     loadComponent: () =>
       import('./pages/home/home.page').then((m) => m.HomePage),
   },
