@@ -8,7 +8,7 @@ import {
   IonItem,
   IonLabel,
 } from '@ionic/angular/standalone';
-import { Calculadora } from '../../services/calculadora'; // Importar el servicio para ser usado
+import { Calculadora } from '../../services/calculadora/calculadora'; // Importar el servicio para ser usado
 import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
 
 @Component({
