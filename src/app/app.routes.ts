@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth-guard';
+import { authCanMatch } from './guards/match-guard';
 
 export const routes: Routes = [
   {
@@ -52,6 +53,7 @@ export const routes: Routes = [
   },
   {
     path: 'pokemon',
+    canMatch: [authCanMatch], 
     loadComponent: () =>
       import('./pages/pokemon/pokemon.page').then((m) => m.PokemonPage),
   },

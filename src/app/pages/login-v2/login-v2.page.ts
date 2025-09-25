@@ -54,10 +54,16 @@ export class LoginV2Page implements OnInit {
         if (isSuccess) {
           this.router.navigate(['/home'])
           this.logMessage('Login exitoso', 'Has ingresado al sistema!');
+          this.clearInputs()
         } else {
           this.logMessage('Login invalido', 'Credenciales ingresadas erróneas');
+          this.clearInputs()
         }
       },
+      error: (err) => {
+        console.error(err)
+        this.logMessage("Error:", "Oops! Ha ocurrido un error al iniciar sesión...", err)
+      }
     });
 
     this.auth.currentUser = null;
@@ -68,13 +74,19 @@ export class LoginV2Page implements OnInit {
     this.logMessage('Saliendo del sistema', 'Vuelva pronto');
   }
 
-  async logMessage(header: string, message: string) {
+  async logMessage(header: string, message: string, subHeader?: string) {
     const alert = await this.alertController.create({
       header: header,
+      subHeader: subHeader,
       message: message,
       buttons: ['Ok'],
     });
 
     await alert.present();
+  }
+
+  clearInputs(){
+    this.username = ""
+    this.password = ""
   }
 }
