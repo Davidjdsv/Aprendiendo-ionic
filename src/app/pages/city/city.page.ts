@@ -10,7 +10,7 @@ import {
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/angular/standalone';
-import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';  
+import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
@@ -45,7 +45,10 @@ export class CityPage implements OnInit {
   descripcion!: string;
   poblacion!: number;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id'); // Obteniendo el id que se envía por el routerLink

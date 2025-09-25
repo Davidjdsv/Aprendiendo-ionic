@@ -15,9 +15,9 @@ import {
   IonInfiniteScroll,
   IonInfiniteScrollContent,
 } from '@ionic/angular/standalone';
-import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
-import { RickAndMorty } from '../services/rickAndMorty/rick-and-morty';
-import { RickAndMortyMdl } from '../modelos/rickAndMorty/rick-and-morty';
+import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
+import { RickAndMorty } from '../../services/rickAndMorty/rick-and-morty';
+import { RickAndMortyMdl } from '../../modelos/rickAndMorty/rick-and-morty';
 import { map } from 'rxjs';
 
 @Component({
@@ -44,32 +44,32 @@ import { map } from 'rxjs';
   ],
 })
 
-  // ngOnInit() {
-  //   this.rmResponse.getRmCharactersAPI().pipe(
-  //       map((res) =>
-  //         res.results.map((d: RickAndMortyMdl) => ({
-  //           id: d.id,
-  //           name: d.name,
-  //           status: d.status,
-  //           gender: d.gender,
-  //           location: d.location.name,
-  //           species: d.species,
-  //           image: d.image,
-  //         }))
-  //       )
-  //     )
-  //     .subscribe({
-  //       next: (data) => {
-  //         console.log('data: ', data);
-  //         this.rmCharacters = data;
-  //       },
-  //       error: (e) => {
-  //         console.error(e);
-  //       },
-  //     });
+// ngOnInit() {
+//   this.rmResponse.getRmCharactersAPI().pipe(
+//       map((res) =>
+//         res.results.map((d: RickAndMortyMdl) => ({
+//           id: d.id,
+//           name: d.name,
+//           status: d.status,
+//           gender: d.gender,
+//           location: d.location.name,
+//           species: d.species,
+//           image: d.image,
+//         }))
+//       )
+//     )
+//     .subscribe({
+//       next: (data) => {
+//         console.log('data: ', data);
+//         this.rmCharacters = data;
+//       },
+//       error: (e) => {
+//         console.error(e);
+//       },
+//     });
 
-  //     console.log(this.loadMoreCharacters())
-  // }
+//     console.log(this.loadMoreCharacters())
+// }
 export class RickAndMortyPage implements OnInit {
   rmCharacters: RickAndMortyMdl[] = [];
   currentPage: number = 1;
@@ -100,7 +100,7 @@ export class RickAndMortyPage implements OnInit {
   }
 
   loadMoreCharacters(event?: any) {
-    console.log(event)
+    console.log(event);
     if (this.currentPage >= this.totalPages) {
       this.hasMorePages = false;
       if (event) event.target.complete(); // Completar aquí
@@ -139,10 +139,13 @@ export class RickAndMortyPage implements OnInit {
   }
 
   onIonInfinite(event: any) {
-    console.log('🚀 SCROLL INFINITO DISPARADO - Página actual:', this.currentPage);
+    console.log(
+      '🚀 SCROLL INFINITO DISPARADO - Página actual:',
+      this.currentPage
+    );
     this.loadMoreCharacters(event);
     setTimeout(() => {
-    event.target.complete();
-  }, 250);
+      event.target.complete();
+    }, 250);
   }
 }

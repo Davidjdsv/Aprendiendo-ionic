@@ -2,8 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton } from '@ionic/angular/standalone';
-import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
+import {
+  IonContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonButton,
+} from '@ionic/angular/standalone';
+import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { ToastController, AlertController } from '@ionic/angular';
@@ -13,18 +22,34 @@ import { ToastController, AlertController } from '@ionic/angular';
   templateUrl: './countries.page.html',
   styleUrls: ['./countries.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonButton, RouterLink, SharedMenuComponent]
+  imports: [
+    IonContent,
+    CommonModule,
+    FormsModule,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonButton,
+    RouterLink,
+    SharedMenuComponent,
+  ],
 })
 export class CountriesPage implements OnInit {
-
   countries: any[] = [];
-  token: any = localStorage.getItem("token");
+  token: any = localStorage.getItem('token');
 
-  constructor(private http: HttpClient, public toastController: ToastController, public alertController: AlertController) { }
+  constructor(
+    private http: HttpClient,
+    public toastController: ToastController,
+    public alertController: AlertController
+  ) {}
 
   ngOnInit() {
-    console.log("token:", this.token);
-    this.getCountries().subscribe(res => {
+    console.log('token:', this.token);
+    this.getCountries().subscribe((res) => {
       console.log(res);
       this.countries = res;
     });
@@ -40,21 +65,21 @@ export class CountriesPage implements OnInit {
   }
 
   async presentToast(country: any) {
-    try{
+    try {
       const toast = await this.toastController.create({
         message: `En ${country.name} la capital es ${country.capital}`,
         duration: 2000,
-        position: "top"
+        position: 'top',
       });
       toast.present();
-    }catch(error){
+    } catch (error) {
       console.log(error);
       this.presentToast(error);
     }
   }
 
   async presentAlert(country: any) {
-    try{
+    try {
       const alert = await this.alertController.create({
         header: country.name,
         subHeader: country.capital,
@@ -72,20 +97,14 @@ export class CountriesPage implements OnInit {
             role: 'destructive',
             handler: () => {
               console.log('Eliminado');
-            }
-          }
-        ]
+            },
+          },
+        ],
       });
       alert.present();
-    }catch(error){
+    } catch (error) {
       console.log(error);
       this.presentAlert(error);
     }
   }
-
-  
-
-
-
-
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../services/core/auth-service';
+import { AuthService } from '../../services/core/auth-service';
 import {
   IonContent,
   IonCard,
@@ -12,9 +12,9 @@ import {
   IonInput,
   IonFooter,
   IonAlert,
-  AlertController 
+  AlertController,
 } from '@ionic/angular/standalone';
-import { SharedMenuComponent } from '../components/shared-menu/shared-menu.component';
+import { SharedMenuComponent } from '../../components/shared-menu/shared-menu.component';
 
 @Component({
   selector: 'app-login-v2',
@@ -36,33 +36,34 @@ import { SharedMenuComponent } from '../components/shared-menu/shared-menu.compo
   ],
 })
 export class LoginV2Page implements OnInit {
-  username!: string
-  password!: string
-  message!: string
+  username!: string;
+  password!: string;
+  message!: string;
 
-  constructor(private auth: AuthService, private alertController: AlertController) {}
+  constructor(
+    private auth: AuthService,
+    private alertController: AlertController
+  ) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
-  loginOnClick(username: string, password: string){
+  loginOnClick(username: string, password: string) {
     this.auth.logIn(username, password).subscribe({
       next: (isSuccess) => {
-        if(isSuccess){
-          this.logMessage("Login exitoso", "Has ingresado al sistema!")
+        if (isSuccess) {
+          this.logMessage('Login exitoso', 'Has ingresado al sistema!');
         } else {
-          this.logMessage("Login invalido", "Credenciales ingresadas erróneas")
+          this.logMessage('Login invalido', 'Credenciales ingresadas erróneas');
         }
-      }
-    })
-    
-    this.auth.currentUser = null
+      },
+    });
+
+    this.auth.currentUser = null;
   }
 
-  logOutOnClick(){
-    this.auth.logOut()
-    this.logMessage("Saliendo del sistema", "Vuelva pronto")
+  logOutOnClick() {
+    this.auth.logOut();
+    this.logMessage('Saliendo del sistema', 'Vuelva pronto');
   }
 
   async logMessage(header: string, message: string) {
