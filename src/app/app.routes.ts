@@ -108,4 +108,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
   },
+  {
+    path: 'crud-usuarios',
+    loadComponent: () => import('./pages/crud-usuarios/crud-usuarios.page').then( m => m.CrudUsuariosPage)
+  },
 ];
