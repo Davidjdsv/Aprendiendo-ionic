@@ -104,12 +104,12 @@ export const routes: Routes = [
       import('./pages/login-v2/login-v2.page').then((m) => m.LoginV2Page),
   },
   {
+    path: 'crud-usuarios',
+    loadComponent: () => import('./pages/crud-usuarios/crud-usuarios.page').then( m => m.CrudUsuariosPage)
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
-  },
-  {
-    path: 'crud-usuarios',
-    loadComponent: () => import('./pages/crud-usuarios/crud-usuarios.page').then( m => m.CrudUsuariosPage)
   },
 ];

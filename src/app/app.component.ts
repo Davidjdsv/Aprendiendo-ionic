@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
     { title: 'Pokemon', url: '/pokemon', icon: 'game-controller'},
     { title: 'Login', url: '/login', icon: 'log-in' },
     { title: 'LoginV2', url: '/login-v2', icon: 'log-in' },
+    { title: 'Crud Usuarios', url: '/crud-usuarios', icon: 'people-circle' },
     { title: 'Infinite Scroll', url: '/infinite-scroll', icon: 'infinite' },
     { title: 'Father-and-son', url: '/father-and-son', icon: 'football' },
     { title: 'Components', url: '/test-components', icon: 'library' },

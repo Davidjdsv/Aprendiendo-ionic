@@ -1,0 +1,11 @@
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* título a la izq, botón a la der */
+    gap: 0.75rem;
+    flex-wrap: wrap; /* por si en pantallas pequeñas el botón baja de línea */
+}
+
+.header-row ion-card-title {
+    margin: 0; /* evita empujes verticales */
+}
