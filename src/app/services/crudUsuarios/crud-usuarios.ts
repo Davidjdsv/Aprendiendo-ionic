@@ -12,7 +12,7 @@ export class CrudUsuarios {
   constructor(private http: HttpClient){}
 
   // * Espera una respuesta que coincida con el tipo de la interface de UsuariosResponse
-  getUers(): Observable<Usuario[]>{
+  getUsers(): Observable<Usuario[]>{
     // * Siendo específicos, obtiene la url que espera de la interface, obteniéndolo
     return this.http.get<UsuariosResponse>(this.url).pipe(
       map(res => {
