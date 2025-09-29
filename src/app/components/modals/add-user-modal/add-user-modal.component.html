@@ -22,7 +22,7 @@
         <ion-label>Document Type</ion-label>
       </ion-list-header>
       
-      <ion-radio-group [(ngModel)]="userData.tipoDocumento" name="tipoDocumento">
+      <ion-radio-group [(ngModel)]="userData.tipo_documento" name="tipo_documento">
         <ion-item>
           <ion-label class="ion-padding-vertical" >CC - Cédula de Ciudadanía</ion-label>
           <ion-radio slot="start" value="CC"></ion-radio>
@@ -47,8 +47,8 @@
         required="true"
         label="Document Number" label-placement="floating" fill="solid"
         type="number" 
-        [(ngModel)]="userData.numeroDocumento" 
-        name="numeroDocumento"
+        [(ngModel)]="userData.numero_documento" 
+        name="numero_documento"
         maxlength="10">
       </ion-input>
     </ion-item>
@@ -106,14 +106,14 @@
     <!-- Descripción -->
     <ion-item>
       <ion-label class="ion-margin-vertical" position="floating"></ion-label>
-      <ion-textarea
+      <ion-input
       required="true"
         label="A short description here" label-placement="floating" fill="solid"
         [(ngModel)]="userData.juego_favorito" 
-        name="descripcion"
+        name="juego_favorito"
         inputmode="text"
         rows="4">
-      </ion-textarea>
+      </ion-input>
     </ion-item>
 
   </form>

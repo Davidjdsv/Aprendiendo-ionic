@@ -21,6 +21,7 @@ import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
 import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.component';
 // 👇 Importar el componente del modal que creamos
 import { AddUserModalComponent } from 'src/app/components/modals/add-user-modal/add-user-modal.component';
+import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
 
 @Component({
   selector: 'app-crud-usuarios',
@@ -48,14 +49,14 @@ import { AddUserModalComponent } from 'src/app/components/modals/add-user-modal/
 export class CrudUsuariosPage implements OnInit {
 
   // 👇 Array para almacenar los usuarios (temporal, luego lo moveremos a un servicio)
-  usuarios: any[] = [];
+  usuarios: Usuario[] = [];
 
   constructor(private modalCtrl: ModalController, private crudUsuarios: CrudUsuarios) {}
 
   ngOnInit() {
     this.crudUsuarios.getUsers().subscribe({
       next: (res) => {
-        this.usuarios = res
+        this.usuarios = res // * Llena el array con lo que traiga del backend desde la bd
       },
       error: (err) => {
         console.error("Error: ", err)
@@ -79,12 +80,20 @@ export class CrudUsuariosPage implements OnInit {
     // Si el usuario presionó "Save" (role = 'confirm')
     if (role === 'confirm') {
       console.log('Datos recibidos del modal:', data);
+
+      this.crudUsuarios.createUser(data).subscribe({
+        next: (res) => {
+          console.log("Respuesta del servicio: ", res)
+        }
+      })
       
       // 👇 Agregar el usuario al array (con un ID temporal)
       const nuevoUsuario = {
         id: this.usuarios.length + 1,
         ...data // Spread operator: copia todas las propiedades de 'data'
       };
+
+      
       
       this.usuarios.push(nuevoUsuario);
       console.log('Usuarios actuales:', this.usuarios);

@@ -44,7 +44,6 @@ import {
     IonRadio,
     IonItem,
     IonInput,
-    IonTextarea,
     IonFooter
   ]
 })
@@ -52,8 +51,8 @@ export class AddUserModalComponent implements OnInit {
 
   // 👇 Objeto que almacena todos los datos del formulario
   userData = {
-    tipoDocumento: 'CC', // Valor por defecto
-    numeroDocumento: '',
+    tipo_documento: 'CC', // Valor por defecto
+    numero_documento: '',
     nombre: '',
     apellido: '',
     edad: null,

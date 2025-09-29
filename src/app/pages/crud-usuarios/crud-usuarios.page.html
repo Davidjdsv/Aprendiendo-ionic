@@ -52,7 +52,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @for(usuario of usuarios; track usuario.id; let i = $index){
+                  @for(usuario of usuarios; track usuario.id_usuario; let i = $index){
                   <tr>
                     <td class="ion-text-center">{{ $index + 1 }}</td>
                     <td>{{ usuario.tipo_documento }}</td>
