@@ -15,6 +15,7 @@ import {
   IonText,
   IonButton,
   IonIcon,
+  AlertController,
   ModalController // 👈 Importar el controlador de modales
 } from '@ionic/angular/standalone';
 import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
@@ -51,7 +52,9 @@ export class CrudUsuariosPage implements OnInit {
   // 👇 Array para almacenar los usuarios (temporal, luego lo moveremos a un servicio)
   usuarios: Usuario[] = [];
 
-  constructor(private modalCtrl: ModalController, private crudUsuarios: CrudUsuarios) {}
+  constructor(private modalCtrl: ModalController, 
+    private crudUsuarios: CrudUsuarios,
+    private alertController: AlertController) {}
 
   ngOnInit() {
     this.crudUsuarios.getUsers().subscribe({
@@ -61,6 +64,24 @@ export class CrudUsuariosPage implements OnInit {
       error: (err) => {
         console.error("Error: ", err)
       }
+    })
+  }
+
+  // * Alerts
+  private async showSuccessAlert(nombre?: string){
+    const alert = await this.alertController.create({
+      header: "¡Usuario creado!",
+      message: `El usuario ${nombre ?? 'Nuevo usuario'} ha sido agregado correctamente.`,
+      buttons: ["Ok"]
+    })
+    await alert.present()
+  }
+
+  private async showErrorAlert(msg?: string){
+    const alert = await this.alertController.create({
+      header: "¡Ups! Error al crear el usuario...",
+      message: msg ?? `Ocurrió un error al crear el usuario`,
+      buttons: ["Entendido"]
     })
   }
 
@@ -82,14 +103,14 @@ export class CrudUsuariosPage implements OnInit {
       console.log('Datos recibidos del modal:', data);
 
       this.crudUsuarios.createUser(data).subscribe({
-        next: (res) => {
+        next: async (res) => {
           console.log("Respuesta del servicio: ", res)
           const creado = res ?? data // ? Toma res si existe, sino, toma data
           this.usuarios = [creado, ... this.usuarios] // * es como un append. Lo que hay en usuarios[] le añade lo que toma del creado
-          alert("Usuario agregado con éxito: ")
+          await this.showSuccessAlert(creado?.nombre)
         }, 
-        error: (err) => {
-          alert("Hubo un error al agregar el usuario")
+        error: async (err) => {
+          await this.showErrorAlert("¡Ups! Hubo un error al crear el usuario. Intente de nuevo.")
         }
       })
       
