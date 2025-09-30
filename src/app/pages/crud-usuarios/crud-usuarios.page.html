@@ -62,7 +62,7 @@
                     <td>{{ usuario.edad }}</td>
                     <td>{{ usuario.juego_favorito }}</td>
                     <td class="ion-display-flex ion-justify-content-center ion-align-items-center ion-text-center">
-                      <ion-button size="small" color="warning">
+                      <ion-button size="small" color="warning" (click)="onEditUSer(usuario.id_usuario)" >
                         <ion-icon name="create-outline"></ion-icon>
                       </ion-button>
                       <ion-button size="small" color="danger">

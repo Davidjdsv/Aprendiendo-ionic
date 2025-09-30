@@ -22,6 +22,7 @@ import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
 import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.component';
 // 👇 Importar el componente del modal que creamos
 import { AddUserModalComponent } from 'src/app/components/modals/add-user-modal/add-user-modal.component';
+import { EditUserModalComponent } from 'src/app/components/modals/edit-user-modal/edit-user-modal.component';
 import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
 
 @Component({
@@ -85,7 +86,23 @@ export class CrudUsuariosPage implements OnInit {
     })
   }
 
-  // 👇 Método que abre el modal cuando presionas "Add user"
+  private async showSuccessEditAlert(){
+    const alert = await this.alertController.create({
+      header: "¡Usuario editado!",
+      message: "Se ha editado el usuario correctamente",
+      buttons: ["Ok"]
+    })
+  }
+
+  private async showErrorEditAlert(){
+    const alert = await this.alertController.create({
+      header: "¡Ups¡ Hubo un error!",
+      message: "Hubo un error al editar el usuario...",
+      buttons: ["Entendido"]
+    })
+  }
+
+  // * Método para crear un usuario
   async onAddUser() {
     // Crear el modal
     const modal = await this.modalCtrl.create({
@@ -126,4 +143,40 @@ export class CrudUsuariosPage implements OnInit {
       console.log('Usuarios actuales:', this.usuarios);
     }
   }
+
+  // * Método para editar un usuario
+  async onEditUSer(id_usuario: number){
+    const modal = await this.modalCtrl.create({
+      component: EditUserModalComponent,
+      componentProps: {
+        id_user: id_usuario
+      }
+    })
+
+    await modal.present()
+
+    const {data, role} = await modal.onWillDismiss()
+
+    if(role == "confirm"){
+      // data contendrá el usuario con los cambios
+      this.crudUsuarios.updateUser(data).subscribe({
+        next: async (res) => {
+          // * Aquí actualiza la lista de los usuarios
+          const index = this.usuarios.findIndex(u => u.id_usuario === res.id_usuario) // u.id_usuario es de finIndex, sino lo encuentra, devuelve -1
+          if(index !== -1){
+            this.usuarios[index] = res
+          }
+
+          await this.showSuccessEditAlert()
+
+        },
+        error: async (err) => {
+          await this.showErrorEditAlert()
+        }
+      })
+    }
+  }
+
+
+
 }

@@ -2,7 +2,7 @@
 export type TipoDocumento = 'TI' | 'CC' | 'CE';
 
 export interface Usuario {
-    id_usuario: string;
+    id_usuario: number;
     tipo_documento: TipoDocumento;
     numero_documento: string;
     nombre: string;
