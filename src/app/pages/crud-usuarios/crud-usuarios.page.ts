@@ -84,6 +84,12 @@ export class CrudUsuariosPage implements OnInit {
       this.crudUsuarios.createUser(data).subscribe({
         next: (res) => {
           console.log("Respuesta del servicio: ", res)
+          const creado = res ?? data // ? Toma res si existe, sino, toma data
+          this.usuarios = [creado, ... this.usuarios] // * es como un append. Lo que hay en usuarios[] le añade lo que toma del creado
+          alert("Usuario agregado con éxito: ")
+        }, 
+        error: (err) => {
+          alert("Hubo un error al agregar el usuario")
         }
       })
       

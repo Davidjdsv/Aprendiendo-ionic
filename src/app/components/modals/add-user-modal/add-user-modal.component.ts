@@ -17,9 +17,8 @@ import {
   IonRadio,
   IonItem,
   IonInput,
-  IonTextarea,
   IonFooter,
-  ModalController // 👈 Importante: controla el modal
+  ModalController // * Importante: controla el modal
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -29,7 +28,7 @@ import {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule, // 👈 Necesario para [(ngModel)]
+    FormsModule, // * Necesario para [(ngModel)]
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -49,7 +48,7 @@ import {
 })
 export class AddUserModalComponent implements OnInit {
 
-  // 👇 Objeto que almacena todos los datos del formulario
+  // * Objeto que almacena todos los datos del formulario
   userData = {
     tipo_documento: 'CC', // Valor por defecto
     numero_documento: '',
@@ -63,14 +62,14 @@ export class AddUserModalComponent implements OnInit {
 
   ngOnInit() {}
 
-  // 👇 Cierra el modal SIN enviar datos
+  // * Cierra el modal SIN enviar datos
   dismiss() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  // 👇 Cierra el modal Y envía los datos al componente padre (crud-usuarios.page.ts)
+  // * Cierra el modal Y envía los datos al componente padre (crud-usuarios.page.ts)
   save() {
-    // Aquí podrías agregar validaciones antes de guardar
+    // * Aquí podrías agregar validaciones antes de guardar
     this.modalCtrl.dismiss(this.userData, 'confirm');
   }
 

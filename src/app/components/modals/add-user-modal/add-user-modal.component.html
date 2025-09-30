@@ -22,57 +22,56 @@
         <ion-label>Document Type</ion-label>
       </ion-list-header>
       
-      <ion-radio-group [(ngModel)]="userData.tipo_documento" name="tipo_documento">
-        <ion-item>
-          <ion-label class="ion-padding-vertical" >CC - Cédula de Ciudadanía</ion-label>
-          <ion-radio slot="start" value="CC"></ion-radio>
+      <ion-radio-group [(ngModel)]="userData.tipo_documento" name="tipo_documento" value="CC" value="space-between" required>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="CC" alignment="start" justify="space-between">CC - Cédula de Ciudadanía</ion-radio>
         </ion-item>
         
-        <ion-item>
-          <ion-label>TI - Tarjeta de Identidad</ion-label>
-          <ion-radio slot="start" value="TI"></ion-radio>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="TI" alignment="start" justify="space-between">TI - Tarjeta de Identidad</ion-radio>
         </ion-item>
         
-        <ion-item>
-          <ion-label>PP - Pasaporte</ion-label>
-          <ion-radio slot="start" value="PP"></ion-radio>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="PP" alignment="start" justify="space-between">PP - Pasaporte</ion-radio>
         </ion-item>
       </ion-radio-group>
-    </ion-list>
-
-    <!-- Número de Documento -->
-    <ion-item>
-      <ion-label class="ion-margin-vertical" position="floating"></ion-label>
-      <ion-input class="ion-margin-vertical"
-        required="true"
+      
+      <!-- Número de Documento -->
+      <ion-item>
+        <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+        <ion-input class="ion-margin-vertical"
+        required
         label="Document Number" label-placement="floating" fill="solid"
-        type="number" 
+        type="numeric" 
         [(ngModel)]="userData.numero_documento" 
         name="numero_documento"
-        maxlength="10">
+        maxlength="10"
+        max=10
+        minlength="5"
+        min=5>
       </ion-input>
     </ion-item>
-
+    
     <!-- Nombre -->
     <ion-item>
       <ion-label class="ion-margin-vertical" position="floating"></ion-label>
       <ion-input class="ion-margin-vertical" 
-      required="true"
-        label="Name" label-placement="floating" fill="solid"
-        type="text" 
-        [(ngModel)]="userData.nombre" 
-        name="nombre"
-        maxlength="25"
-        minlength="2"
-        inputmode="text">
-      </ion-input>
-    </ion-item>
+      required
+      label="Name" label-placement="floating" fill="solid"
+      type="text" 
+      [(ngModel)]="userData.nombre" 
+      name="nombre"
+      maxlength="25"
+      minlength="2"
+      inputmode="text">
+    </ion-input>
+  </ion-item>
 
     <!-- Apellido -->
     <ion-item>
       <ion-label class="ion-margin-vertical" position="floating"></ion-label>
       <ion-input class="ion-margin-vertical" 
-      required="true"
+      required
         label="Lastname" label-placement="floating" fill="solid"
         type="text" 
         [(ngModel)]="userData.apellido" 
@@ -87,18 +86,14 @@
     <ion-item>
       <ion-label class="ion-margin-vertical" position="floating"></ion-label>
       <ion-input class="ion-margin-vertical"
-      required="true"
+        required
         label="Age" label-placement="floating" fill="solid"
         color="'primary'"
-        maxlength="3"
-        minlength="1"
         max=150
         min=1
-        type="numeric" 
+        type="number" 
         [(ngModel)]="userData.edad" 
         name="edad"
-        min="1"
-        max="100"
         inputmode="numeric">
       </ion-input>
     </ion-item>
@@ -107,7 +102,7 @@
     <ion-item>
       <ion-label class="ion-margin-vertical" position="floating"></ion-label>
       <ion-input
-      required="true"
+        required
         label="A short description here" label-placement="floating" fill="solid"
         [(ngModel)]="userData.juego_favorito" 
         name="juego_favorito"
@@ -115,6 +110,7 @@
         rows="4">
       </ion-input>
     </ion-item>
+</ion-list>
 
   </form>
 </ion-content>
