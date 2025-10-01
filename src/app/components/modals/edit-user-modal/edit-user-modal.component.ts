@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
-  IonButtons, 
-  IonButton, 
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton,
   IonIcon,
   IonContent,
   IonList,
@@ -17,12 +17,11 @@ import {
   IonItem,
   IonInput,
   IonFooter,
-  ModalController // * Importante: controla el modal
+  ModalController, // * Importante: controla el modal
 } from '@ionic/angular/standalone';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
-import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
-
+import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios-service';
 
 @Component({
   selector: 'app-edit-user-modal',
@@ -46,16 +45,16 @@ import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
     IonRadio,
     IonItem,
     IonInput,
-    IonFooter
-  ]
+    IonFooter,
+  ],
 })
-export class EditUserModalComponent  implements OnInit {
+export class EditUserModalComponent implements OnInit {
+  @Input() userData!: Usuario; // * Tomar los datos del usuario que se va a editar
 
-  @Input() userData!: Usuario // * Tomar los datos del usuario que se va a editar
-
-  constructor(private mdlController: ModalController,
+  constructor(
+    private mdlController: ModalController,
     private crudUsuarioService: CrudUsuarios
-  ) { }
+  ) {}
 
   ngOnInit() {
     // * Recuperamos el id del usuario y lo guardamos en userData.id_usuario
@@ -71,12 +70,11 @@ export class EditUserModalComponent  implements OnInit {
     // }
   }
 
-  dismiss(){
-    this.mdlController.dismiss(null, "cancel")
+  dismiss() {
+    this.mdlController.dismiss(null, 'cancel');
   }
 
-  save(){
-    this.mdlController.dismiss(this.userData, "Confirm")
+  save() {
+    this.mdlController.dismiss(this.userData, 'Confirm');
   }
-
 }

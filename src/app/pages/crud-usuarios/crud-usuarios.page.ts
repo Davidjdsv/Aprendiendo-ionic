@@ -16,9 +16,9 @@ import {
   IonButton,
   IonIcon,
   AlertController,
-  ModalController // 👈 Importar el controlador de modales
+  ModalController, // 👈 Importar el controlador de modales
 } from '@ionic/angular/standalone';
-import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
+import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios-service';
 import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.component';
 // 👇 Importar el componente del modal que creamos
 import { AddUserModalComponent } from 'src/app/components/modals/add-user-modal/add-user-modal.component';
@@ -45,67 +45,81 @@ import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
     IonCardContent,
     IonText,
     IonButton,
-    IonIcon
+    IonIcon,
   ],
 })
 export class CrudUsuariosPage implements OnInit {
-
   // * Array para almacenar los usuarios, luego recorrerlos y mostrarlos en la tabla etc
   usuarios: Usuario[] = []; // * Un array que recibe datos de tipo Usuario
 
-  constructor(private modalCtrl: ModalController, 
+  constructor(
+    private modalCtrl: ModalController,
     private crudUsuarios: CrudUsuarios,
-    private alertController: AlertController) {}
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.crudUsuarios.getUsers().subscribe({
       next: (res) => {
-        this.usuarios = res // * Llena el array con lo que traiga del backend desde la bd
+        this.usuarios = res; // * Llena el array con lo que traiga del backend desde la bd
       },
       error: (err) => {
-        console.error("Error: ", err)
-      }
-    })
+        console.error('Error: ', err);
+      },
+    });
   }
 
   // * INICIO ALERTAS
-  private async showSuccessAlert(nombre?: string){
+  private async showSuccessAlert(nombre?: string) {
     const alert = await this.alertController.create({
-      header: "¡Usuario creado!",
-      message: `El usuario ${nombre ?? 'Nuevo usuario'} ha sido agregado correctamente.`,
-      buttons: ["Ok"]
-    })
-    await alert.present()
+      header: '¡Usuario creado!',
+      message: `El usuario ${
+        nombre ?? 'Nuevo usuario'
+      } ha sido agregado correctamente.`,
+      buttons: ['Ok'],
+    });
+    await alert.present();
   }
 
-  private async showErrorAlert(msg?: string){
+  private async showErrorAlert(msg?: string) {
     const alert = await this.alertController.create({
-      header: "¡Ups! Error al crear el usuario...",
+      header: '¡Ups! Error al crear el usuario...',
       message: msg ?? `Ocurrió un error al crear el usuario`,
-      buttons: ["Entendido"]
-    })
-    await alert.present()
+      buttons: ['Entendido'],
+    });
+    await alert.present();
   }
 
-  private async showSuccessEditAlert(){
+  private async showSuccessEditAlert() {
     const alert = await this.alertController.create({
-      header: "¡Usuario editado!",
-      message: "Se ha editado el usuario correctamente",
-      buttons: ["Ok"]
-    })
-    await alert.present()
+      header: '¡Usuario editado!',
+      message: 'Se ha editado el usuario correctamente',
+      buttons: ['Ok'],
+    });
+    await alert.present();
   }
 
-  private async showErrorEditAlert(){
+  private async showErrorEditAlert() {
     const alert = await this.alertController.create({
-      header: "¡Ups¡ Hubo un error!",
-      message: "Hubo un error al editar el usuario...",
-      buttons: ["Entendido"]
-    })
-    await alert.present()
+      header: '¡Ups¡ Hubo un error!',
+      message: 'Hubo un error al editar el usuario...',
+      buttons: ['Entendido'],
+    });
+    await alert.present();
   }
 
   // * FIN ALERTAS
+
+  private loadUsers(){
+    this.crudUsuarios.getUsers().subscribe({
+      next: (res) => {
+        this.usuarios = res
+      },
+      error: (err) => {
+        console.error("Error al recargar los usuarios: ", err)
+      }
+    })
+  }
 
   // * Método para crear un usuario
   async onAddUser() {
@@ -119,7 +133,7 @@ export class CrudUsuariosPage implements OnInit {
 
     // Esperar a que el modal se cierre y obtener los datos
     const { data, role } = await modal.onWillDismiss(); // ? Data: Los datos que se enviaron desde el modal, role: El estado de cierre del modal (confirm o cancel)
-    console.log("Datos recibidos del modal:", data, role)
+    console.log('Datos recibidos del modal:', data, role);
 
     // Si el usuario presionó "Save" (role = 'confirm')
     if (role === 'confirm') {
@@ -127,65 +141,57 @@ export class CrudUsuariosPage implements OnInit {
 
       this.crudUsuarios.createUser(data).subscribe({
         next: async (res) => {
-          console.log("Respuesta del servicio: ", res)
-          const creado = res ?? data // ? Toma res si existe, sino, toma data
-          this.usuarios = [creado, ... this.usuarios] // * es como un append. Lo que hay en usuarios[] le añade lo que toma del creado
-          await this.showSuccessAlert(creado?.nombre)
-        }, 
-        error: async (err) => {
-          await this.showErrorAlert("¡Ups! Hubo un error al crear el usuario. Intente de nuevo.")
-        }
-      })
-      
-      // 👇 Agregar el usuario al array (con un ID temporal)
-      const nuevoUsuario = {
-        id: this.usuarios.length + 1,
-        ...data // Spread operator: copia todas las propiedades de 'data'
-      };
+          console.log('Respuesta del servicio: ', res);
+          const creado = res ?? data; // ? Toma res si existe, sino, toma data
+          await this.showSuccessAlert(creado?.nombre);
 
-      
-      
-      this.usuarios.push(nuevoUsuario);
-      console.log('Usuarios actuales:', this.usuarios);
+          this.loadUsers()
+        },
+        error: async (err) => {
+          await this.showErrorAlert(
+            '¡Ups! Hubo un error al crear el usuario. Intente de nuevo.'
+          );
+        },
+      });
+
+
     }
   }
 
   // * Método para editar un usuario
-  async onEditUser(usuario: Usuario){
+  async onEditUser(usuario: Usuario) {
     const modal = await this.modalCtrl.create({
       component: EditUserModalComponent,
       componentProps: {
-        userData: usuario
-      }
-    })
+        userData: usuario,
+      },
+    });
 
-    await modal.present()
+    await modal.present();
 
-    const {data, role} = await modal.onWillDismiss()
+    const { data, role } = await modal.onWillDismiss();
     console.log('📥 datos del usuario:', data, role);
-    
-    if(role == "Confirm"){
+
+    if (role == 'Confirm') {
       console.log('📤 Datos que se envían al backend:', data);
       // data contendrá el usuario con los cambios
       this.crudUsuarios.updateUser(data).subscribe({
         next: async (res) => {
           console.log('📥 Respuesta del backend:', res);
           // * Aquí actualiza la lista de los usuarios
-          const index = this.usuarios.findIndex(u => u.id_usuario === res.id_usuario) // u.id_usuario es de finIndex, sino lo encuentra, devuelve -1
-          if(index !== -1){
-            this.usuarios[index] = res
+          const index = this.usuarios.findIndex(
+            (u) => u.id_usuario === res.id_usuario
+          ); // u.id_usuario es de finIndex, sino lo encuentra, devuelve -1
+          if (index !== -1) {
+            this.usuarios[index] = res;
           }
 
-          await this.showSuccessEditAlert()
-
+          await this.showSuccessEditAlert();
         },
         error: async (err) => {
-          await this.showErrorEditAlert()
-        }
-      })
+          await this.showErrorEditAlert();
+        },
+      });
     }
   }
-
-
-
 }
