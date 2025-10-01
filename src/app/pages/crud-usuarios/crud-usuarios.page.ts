@@ -50,8 +50,8 @@ import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
 })
 export class CrudUsuariosPage implements OnInit {
 
-  // 👇 Array para almacenar los usuarios (temporal, luego lo moveremos a un servicio)
-  usuarios: Usuario[] = [];
+  // * Array para almacenar los usuarios, luego recorrerlos y mostrarlos en la tabla etc
+  usuarios: Usuario[] = []; // * Un array que recibe datos de tipo Usuario
 
   constructor(private modalCtrl: ModalController, 
     private crudUsuarios: CrudUsuarios,
@@ -68,7 +68,7 @@ export class CrudUsuariosPage implements OnInit {
     })
   }
 
-  // * Alerts
+  // * INICIO ALERTAS
   private async showSuccessAlert(nombre?: string){
     const alert = await this.alertController.create({
       header: "¡Usuario creado!",
@@ -84,6 +84,7 @@ export class CrudUsuariosPage implements OnInit {
       message: msg ?? `Ocurrió un error al crear el usuario`,
       buttons: ["Entendido"]
     })
+    await alert.present()
   }
 
   private async showSuccessEditAlert(){
@@ -92,6 +93,7 @@ export class CrudUsuariosPage implements OnInit {
       message: "Se ha editado el usuario correctamente",
       buttons: ["Ok"]
     })
+    await alert.present()
   }
 
   private async showErrorEditAlert(){
@@ -100,20 +102,24 @@ export class CrudUsuariosPage implements OnInit {
       message: "Hubo un error al editar el usuario...",
       buttons: ["Entendido"]
     })
+    await alert.present()
   }
+
+  // * FIN ALERTAS
 
   // * Método para crear un usuario
   async onAddUser() {
     // Crear el modal
     const modal = await this.modalCtrl.create({
-      component: AddUserModalComponent, // 👈 El componente que creamos
+      component: AddUserModalComponent, // * Llama al componente del modal que creamos
     });
 
     // Mostrar el modal
     await modal.present();
 
     // Esperar a que el modal se cierre y obtener los datos
-    const { data, role } = await modal.onWillDismiss();
+    const { data, role } = await modal.onWillDismiss(); // ? Data: Los datos que se enviaron desde el modal, role: El estado de cierre del modal (confirm o cancel)
+    console.log("Datos recibidos del modal:", data, role)
 
     // Si el usuario presionó "Save" (role = 'confirm')
     if (role === 'confirm') {
@@ -145,22 +151,25 @@ export class CrudUsuariosPage implements OnInit {
   }
 
   // * Método para editar un usuario
-  async onEditUSer(id_usuario: number){
+  async onEditUser(usuario: Usuario){
     const modal = await this.modalCtrl.create({
       component: EditUserModalComponent,
       componentProps: {
-        id_user: id_usuario
+        userData: usuario
       }
     })
 
     await modal.present()
 
     const {data, role} = await modal.onWillDismiss()
-
-    if(role == "confirm"){
+    console.log('📥 datos del usuario:', data, role);
+    
+    if(role == "Confirm"){
+      console.log('📤 Datos que se envían al backend:', data);
       // data contendrá el usuario con los cambios
       this.crudUsuarios.updateUser(data).subscribe({
         next: async (res) => {
+          console.log('📥 Respuesta del backend:', res);
           // * Aquí actualiza la lista de los usuarios
           const index = this.usuarios.findIndex(u => u.id_usuario === res.id_usuario) // u.id_usuario es de finIndex, sino lo encuentra, devuelve -1
           if(index !== -1){

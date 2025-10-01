@@ -51,33 +51,24 @@ import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios';
 })
 export class EditUserModalComponent  implements OnInit {
 
-  userData: Usuario = {
-    id_usuario: 0,
-    tipo_documento: 'CC',
-    numero_documento: '',
-    nombre: '',
-    apellido: '',
-    edad: "",
-    juego_favorito: ''
-  }
-
-  @Input() idUsuario!: number
+  @Input() userData!: Usuario // * Tomar los datos del usuario que se va a editar
 
   constructor(private mdlController: ModalController,
     private crudUsuarioService: CrudUsuarios
   ) { }
 
   ngOnInit() {
-    if(this.idUsuario){
-      this.crudUsuarioService.getUser(this.idUsuario).subscribe({
-        next: (res) => {
-          this.userData = res
-        },
-        error: (err) => {
-          alert(`Ocurrió un error al obtener el usuario: ${err}`)
-        }
-      })
-    }
+    // * Recuperamos el id del usuario y lo guardamos en userData.id_usuario
+    // if(this.userData.id_usuario){
+    //   this.crudUsuarioService.getUser(this.userData.id_usuario).subscribe({
+    //     next: (res) => {
+    //       this.userData = res
+    //     },
+    //     error: (err) => {
+    //       alert(`Ocurrió un error al obtener el usuario: ${err}`)
+    //     }
+    //   })
+    // }
   }
 
   dismiss(){

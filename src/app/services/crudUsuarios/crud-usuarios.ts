@@ -30,8 +30,8 @@ export class CrudUsuarios {
   }
 
   // * Obtener un solo usuario
-  getUser(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(`${this.url}?id=${id}`)
+  getUser(id_usuario: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.url}?id_usuario=${id_usuario}`)
   }
 
   // * Crear un usuario a partir de los datos que le envíe el ts con sus respectivos párametros

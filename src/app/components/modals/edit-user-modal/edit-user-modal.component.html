@@ -1,3 +1,132 @@
-<p>
-  edit-user-modal works!
-</p>
+<!-- add-user-modal.component.html -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit an user</ion-title>
+    <!-- Botón para cerrar el modal -->
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Formulario -->
+  <form>
+    
+    <!-- Tipo de Documento - Radio buttons -->
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Document Type</ion-label>
+      </ion-list-header>
+      
+      <ion-radio-group [(ngModel)]="userData.tipo_documento" name="tipo_documento" value="CC" value="space-between" required>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="CC" alignment="start" justify="space-between">CC - Cédula de Ciudadanía</ion-radio>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-radio slot="start" value="TI" alignment="start" justify="space-between">TI - Tarjeta de Identidad</ion-radio>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-radio slot="start" value="PP" alignment="start" justify="space-between">PP - Pasaporte</ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      
+      <!-- Número de Documento -->
+      <ion-item>
+        <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+        <ion-input class="ion-margin-vertical"
+        required
+        label="Document Number" label-placement="floating" fill="solid"
+        type="numeric" 
+        [(ngModel)]="userData.numero_documento" 
+        name="numero_documento"
+        maxlength="10"
+        max=10
+        minlength="5"
+        min=5>
+      </ion-input>
+    </ion-item>
+    
+    <!-- Nombre -->
+    <ion-item>
+      <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+      <ion-input class="ion-margin-vertical" 
+      required
+      label="Name" label-placement="floating" fill="solid"
+      type="text" 
+      [(ngModel)]="userData.nombre" 
+      name="nombre"
+      maxlength="25"
+      minlength="2"
+      inputmode="text">
+    </ion-input>
+  </ion-item>
+
+    <!-- Apellido -->
+    <ion-item>
+      <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+      <ion-input class="ion-margin-vertical" 
+      required
+        label="Lastname" label-placement="floating" fill="solid"
+        type="text" 
+        [(ngModel)]="userData.apellido" 
+        name="apellido"
+        maxlength="25"
+        minlength="2"
+        inputmode="text">
+      </ion-input>
+    </ion-item>
+
+    <!-- Edad -->
+    <ion-item>
+      <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+      <ion-input class="ion-margin-vertical"
+        required
+        label="Age" label-placement="floating" fill="solid"
+        color="'primary'"
+        max=150
+        min=1
+        type="number" 
+        [(ngModel)]="userData.edad" 
+        name="edad"
+        inputmode="numeric">
+      </ion-input>
+    </ion-item>
+
+    <!-- Descripción -->
+    <ion-item>
+      <ion-label class="ion-margin-vertical" position="floating"></ion-label>
+      <ion-input
+        required
+        label="A short description here" label-placement="floating" fill="solid"
+        [(ngModel)]="userData.juego_favorito" 
+        name="juego_favorito"
+        inputmode="text"
+        rows="4">
+      </ion-input>
+    </ion-item>
+</ion-list>
+
+  </form>
+</ion-content>
+
+<!-- Footer con botones -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <!-- Botón cancelar: cierra el modal sin guardar -->
+      <ion-button color="medium" (click)="dismiss()">
+        Cancel
+      </ion-button>
+      <!-- Botón guardar: envía los datos y cierra el modal -->
+      <ion-button color="primary" (click)="save()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
