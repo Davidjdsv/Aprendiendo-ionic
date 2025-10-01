@@ -42,7 +42,6 @@
                 <thead class="table-dark">
                   <tr class="ion-text-center">
                     <th scope="col">Id</th>
-                    <th scope="col">Id usuario</th>
                     <th scope="col">Doc</th>
                     <th scope="col">Num Doc</th>
                     <th scope="col">Name</th>
@@ -55,7 +54,6 @@
                 <tbody>
                   @for(usuario of usuarios; track usuario.id_usuario; let i = $index){
                   <tr>
-                    <td class="ion-text-center">{{ $index + 1 }}</td>
                     <td>{{ usuario.id_usuario }}</td>
                     <td>{{ usuario.tipo_documento }}</td>
                     <td>{{ usuario.numero_documento }}</td>
@@ -67,7 +65,7 @@
                       <ion-button size="small" color="warning" (click)="onEditUser(usuario)" >
                         <ion-icon name="create-outline"></ion-icon>
                       </ion-button>
-                      <ion-button size="small" color="danger">
+                      <ion-button size="small" color="danger" (click)="onDeleteUser(usuario)">
                         <ion-icon name="trash-outline"></ion-icon>
                       </ion-button>
                     </td>

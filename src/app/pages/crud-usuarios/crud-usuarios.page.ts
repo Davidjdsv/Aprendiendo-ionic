@@ -23,6 +23,8 @@ import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.
 // 👇 Importar el componente del modal que creamos
 import { AddUserModalComponent } from 'src/app/components/modals/add-user-modal/add-user-modal.component';
 import { EditUserModalComponent } from 'src/app/components/modals/edit-user-modal/edit-user-modal.component';
+import { DeleteUserModalComponent } from 'src/app/components/modals/delete-user-modal/delete-user-modal.component';
+
 import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
 
 @Component({
@@ -108,17 +110,35 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
+  private async showSuccessDeleteAlert() {
+    const alert = await this.alertController.create({
+      header: '¡Usuario eliminado!',
+      message: 'Se ha eliminado el usuario correctamente',
+      buttons: ['Ok'],
+    });
+    await alert.present();
+  }
+
+  private async showErrorDeleteAlert() {
+    const alert = await this.alertController.create({
+      header: '¡Ups! Hubo un error al eliminar el usuario...',
+      message: 'Hubo un error al eliminar el usuario...',
+      buttons: ['Entendido'],
+    });
+    await alert.present();
+  }
+
   // * FIN ALERTAS
 
-  private loadUsers(){
+  private loadUsers() {
     this.crudUsuarios.getUsers().subscribe({
       next: (res) => {
-        this.usuarios = res
+        this.usuarios = res;
       },
       error: (err) => {
-        console.error("Error al recargar los usuarios: ", err)
-      }
-    })
+        console.error('Error al recargar los usuarios: ', err);
+      },
+    });
   }
 
   // * Método para crear un usuario
@@ -145,7 +165,7 @@ export class CrudUsuariosPage implements OnInit {
           const creado = res ?? data; // ? Toma res si existe, sino, toma data
           await this.showSuccessAlert(creado?.nombre);
 
-          this.loadUsers()
+          this.loadUsers();
         },
         error: async (err) => {
           await this.showErrorAlert(
@@ -153,8 +173,6 @@ export class CrudUsuariosPage implements OnInit {
           );
         },
       });
-
-
     }
   }
 
@@ -190,6 +208,40 @@ export class CrudUsuariosPage implements OnInit {
         },
         error: async (err) => {
           await this.showErrorEditAlert();
+        },
+      });
+    }
+  }
+
+  // * Método para eliminar un usuario
+  async onDeleteUser(usuario: Usuario) {
+    const modal = await this.modalCtrl.create({
+      component: DeleteUserModalComponent,
+      componentProps: {
+        userData: usuario,
+      },
+    });
+    await modal.present();
+
+    const { role } = await modal.onWillDismiss();
+    console.log('Rol del modal:', role);
+
+    if (role === 'confirm') {
+      console.log('Datos que se envían al backend:', usuario);
+      // data contendrá el usuario con los cambios
+      this.crudUsuarios.deleteUser(usuario.id_usuario).subscribe({
+        next: async (res) => {
+          console.log('Respuesta del backend:', res);
+          // * Aquí actualiza la lista de los usuarios
+          const index = this.usuarios.findIndex((u) => u.id_usuario === usuario.id_usuario); // u.id_usuario es de finIndex, sino lo encuentra, devuelve -1
+          if (index !== -1) {
+            this.usuarios.splice(index, 1);
+          }
+
+          await this.showSuccessDeleteAlert();
+        },
+        error: async (err) => {
+          await this.showErrorDeleteAlert();
         },
       });
     }
