@@ -9,6 +9,7 @@
         <ion-content>
           <ion-list id="inbox-list">
             <ion-list-header>Inbox</ion-list-header>
+            <h6>{{ fecha | date }}</h6>
             <!-- <ion-note>hi&#64;ionicframework.com</ion-note> -->
 
             @for (p of appPages; track p; let i = $index) {

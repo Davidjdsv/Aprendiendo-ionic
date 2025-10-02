@@ -7,13 +7,14 @@ import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './services/interceptor/interceptor';
 import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
 import { filter } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 // El enrutador se encarga de cambiar de página
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet],
+  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, DatePipe],
   providers: [HttpClient, Interceptor, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],  
 })
 
@@ -40,10 +41,17 @@ export class AppComponent implements OnInit {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
+  private date = new Date();
+  fecha = this.date.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+  
   constructor(private router: Router) {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
   }
-
+  
   ngOnInit() {
     // Escucha los cambios de ruta para determinar si estamos en login
     this.router.events.pipe(
