@@ -104,6 +104,10 @@ export const routes: Routes = [
       import('./pages/login-v2/login-v2.page').then((m) => m.LoginV2Page),
   },
   {
+    path: 'signals',
+    loadComponent: () => import('./pages/signals/signals.page').then( m => m.SignalsPage)
+  },
+  {
     path: 'crud-usuarios',
     loadComponent: () => import('./pages/crud-usuarios/crud-usuarios.page').then( m => m.CrudUsuariosPage)
   },
@@ -112,4 +116,5 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
   },
+
 ];

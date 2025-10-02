@@ -37,15 +37,16 @@ export class AppComponent implements OnInit {
     { title: 'Father-and-son', url: '/father-and-son', icon: 'football' },
     { title: 'Components', url: '/test-components', icon: 'library' },
     { title: 'Rick & Morty-API', url: '/rick-and-morty', icon: 'code' },
+    { title: 'Signals', url: '/signals', icon: 'wifi' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   private date = new Date();
   fecha = this.date.toLocaleDateString('es-ES', {
+    day: '2-digit',
     year: 'numeric',
     month: '2-digit',
-    day: '2-digit',
   });
   
   constructor(private router: Router) {

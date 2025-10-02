@@ -1,0 +1,47 @@
+<app-shared-menu
+  [showMenu]="true"
+  [color]="'primary'"
+  [title]="'Signals'">
+</app-shared-menu>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-badge class="ion-float-right" color="primary">English</ion-badge>
+  <ion-card-header>
+    <ion-card-title>Signals</ion-card-title>
+    <ion-card-subtitle>A litle explanation about Signals in Angular</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    Signals are a new feature in Angular that allow you to create reactive variables.
+    They are similar to observables, but they are more lightweight and easier to use.
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+    <ion-badge class="ion-float-right" color="tertiary">Español</ion-badge>
+  <ion-card-header>
+    <ion-card-title>Signals</ion-card-title>
+    <ion-card-subtitle>Una explicación breve sobre Signals en Angular</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    Signals son una nueva característica en Angular que te permite crear variables reactivas.
+    Son similares a observables, pero son más livianos y más fáciles de usar.
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+    <ion-badge class="ion-float-right ion-margin-bottom" color="tertiary">Español</ion-badge>
+  <ion-card-header>
+    <ion-card-title>Contador normal</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-button (click)="increment()">Incrementar</ion-button>
+    <ion-button (click)="decrement()">Decrementar</ion-button>
+    <ion-badge color="tertiary">{{ counter }}</ion-badge>
+    <ion-badge color="tertiary">{{ conunterSignal() }}</ion-badge>
+  </ion-card-content>
+</ion-card>
+</ion-content>

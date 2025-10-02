@@ -1,5 +1,5 @@
 // crud-usuarios.page.ts
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -49,6 +49,7 @@ import { Usuario } from 'src/app/modelos/crudUsuarios/crud-usuarios';
     IonButton,
     IonIcon,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CrudUsuariosPage implements OnInit {
   // * Array para almacenar los usuarios, luego recorrerlos y mostrarlos en la tabla etc
