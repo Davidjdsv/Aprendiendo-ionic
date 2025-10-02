@@ -72,7 +72,8 @@ export class CrudUsuariosPage implements OnInit {
   }
 
   // * INICIO ALERTAS
-  private async showSuccessAlert(nombre?: string) {
+  // ? Tip: Es bueno tipar las funciones asíncronas para mejorar la legibilidad y el mantenimiento del código.
+  private async showSuccessAlert(nombre?: string): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Usuario creado!',
       message: `El usuario ${
@@ -83,7 +84,7 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
-  private async showErrorAlert(msg?: string) {
+  private async showErrorAlert(msg?: string): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Ups! Error al crear el usuario...',
       message: msg ?? `Ocurrió un error al crear el usuario`,
@@ -92,7 +93,7 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
-  private async showSuccessEditAlert() {
+  private async showSuccessEditAlert(): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Usuario editado!',
       message: 'Se ha editado el usuario correctamente',
@@ -101,7 +102,7 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
-  private async showErrorEditAlert() {
+  private async showErrorEditAlert(): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Ups¡ Hubo un error!',
       message: 'Hubo un error al editar el usuario...',
@@ -110,7 +111,7 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
-  private async showSuccessDeleteAlert() {
+  private async showSuccessDeleteAlert(): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Usuario eliminado!',
       message: 'Se ha eliminado el usuario correctamente',
@@ -119,7 +120,7 @@ export class CrudUsuariosPage implements OnInit {
     await alert.present();
   }
 
-  private async showErrorDeleteAlert() {
+  private async showErrorDeleteAlert(): Promise<void> {
     const alert = await this.alertController.create({
       header: '¡Ups! Hubo un error al eliminar el usuario...',
       message: 'Hubo un error al eliminar el usuario...',
@@ -142,7 +143,7 @@ export class CrudUsuariosPage implements OnInit {
   }
 
   // * Método para crear un usuario
-  async onAddUser() {
+  async onAddUser(): Promise<void> {
     // Crear el modal
     const modal = await this.modalCtrl.create({
       component: AddUserModalComponent, // * Llama al componente del modal que creamos
