@@ -22,7 +22,10 @@ export class SignalsPage implements OnInit {
 
   decrement(){
     this.counter -= 1
-    this.conunterSignal.update((value) => value - 1)
+    if(this.counter >= 0){
+      this.conunterSignal.update((value) => value - 1)
+    }
+
   }
 
   constructor() { }
