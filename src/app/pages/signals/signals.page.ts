@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, computed, effect, Injector, inject } from '@angular/core';
+import { Component, OnInit, signal, computed, effect, Injector, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -31,18 +31,23 @@ import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.
     FormsModule,
     SharedMenuComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush, //Esto hace que angular trabaje con Zoneless, es decir, que no se actualice el DOM cuando cambia el valor de una signal
 })
 export class SignalsPage implements OnInit {
   counter: number = 0;
   counterSignal = signal(0);
   nameSignal = signal('Jhoan');
-  captitalizedName = computed(() => this.nameSignal().toUpperCase());
+  captitalizedName = computed(() => this.nameSignal().toUpperCase()); // Computed signal, se actualiza cuando cambia el valor de nameSignal. Es de solo lectura
   public injector = inject(Injector)
 
   constructor() {
     console.log(this.captitalizedName()); // Aqui da error por el console.log, pero funciona en el template
-    this.nameSignal.set("Jhoan David Sinisterra Valencia")
     console.log(this.nameSignal())
+    this.nameSignal.set("Jhoan David Sinisterra Valencia")
+    setInterval(() => {
+      this.counterSignal.update((val) => val + 1)
+      console.log("counterSignal en le setInterval:",this.counterSignal())
+    }, 1000);
   }
 
   ngOnInit() {}
