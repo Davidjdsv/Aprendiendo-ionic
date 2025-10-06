@@ -1,6 +1,7 @@
 import { Component, OnInit, signal, computed, effect, Injector, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SimpleCardComponent } from 'src/app/components/simple-card/simple-card.component';
 import {
   IonContent,
   IonCard,
@@ -10,6 +11,10 @@ import {
   IonCardContent,
   IonBadge,
   IonButton,
+  IonInput,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.component';
 
@@ -27,9 +32,14 @@ import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.
     IonCardContent,
     IonBadge,
     IonButton,
+    IonInput,
+    IonGrid,
+    IonRow,
+    IonCol,
     CommonModule,
     FormsModule,
     SharedMenuComponent,
+    SimpleCardComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush, //Esto hace que angular trabaje con Zoneless, es decir, que no se actualice el DOM cuando cambia el valor de una signal
 })
@@ -39,6 +49,11 @@ export class SignalsPage implements OnInit {
   nameSignal = signal('Jhoan');
   captitalizedName = computed(() => this.nameSignal().toUpperCase()); // Computed signal, se actualiza cuando cambia el valor de nameSignal. Es de solo lectura
   public injector = inject(Injector)
+
+  name: string = ""
+  lastName: string = ""
+  age: string = ""
+  job: string = ""
 
   constructor() {
     console.log(this.captitalizedName()); // Aqui da error por el console.log, pero funciona en el template

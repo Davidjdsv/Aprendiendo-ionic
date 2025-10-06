@@ -115,6 +115,10 @@ export const routes: Routes = [
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
+  },  {
+    path: 'dragonball',
+    loadComponent: () => import('./pages/dragonball/dragonball.page').then( m => m.DragonballPage)
   },
+
 
 ];

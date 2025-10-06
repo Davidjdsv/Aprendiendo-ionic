@@ -46,12 +46,64 @@
       <ion-button (click)="increment()">Incrementar</ion-button>
       <ion-button (click)="decrement()">Decrementar</ion-button>
       <ion-badge color="tertiary">Counter: {{ counter }}</ion-badge>
-      <ion-badge color="tertiary">Counter signal: {{ counterSignal() }}</ion-badge>
+      <ion-badge color="tertiary"
+        >Counter signal: {{ counterSignal() }}</ion-badge
+      >
     </ion-card-content>
 
-    <ion-card-content>
-      
-    </ion-card-content>
+    <ion-card class="ion-margin-top">
+      <ion-card-header class="ion-text-start ion-margin-top"> A form to send data to its child </ion-card-header>
+      <ion-card-subtitle class="ion-text-start ion-margin-top">
+        Try to add some basic data below to see the changes in the child card!
+      </ion-card-subtitle>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-margin-horizontal">
+            <form action="">
+              <ion-input
+                name="name"
+                label="Name"
+                placeholder="Enter your name"
+                label-placement="floating"
+                fill="outline"
+                [(ngModel)]="name"
+              ></ion-input>
+              <ion-input
+                name="lastname"
+                label="Last Name"
+                placeholder="Enter your last name"
+                label-placement="floating"
+                fill="outline"
+                [(ngModel)]="lastName"
+              ></ion-input>
+              <ion-input
+                name="age"
+                label="Age"
+                placeholder="Enter your age"
+                label-placement="floating"
+                fill="outline"
+                [(ngModel)]="age"
+              ></ion-input>
+              <ion-input
+                name="job"
+                label="Job"
+                placeholder="Enter your job"
+                label-placement="floating"
+                fill="outline"
+                [(ngModel)]="job"
+              ></ion-input>
+            </form>
+          </ion-col>
 
-  </ion-card>
-</ion-content>
+          <ion-col>
+            <app-simple-card
+              [name]="name"
+              [lastName]="lastName"
+              [age]="age"
+              [job]="job"
+            >
+            </app-simple-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid> </ion-card></ion-card
+></ion-content>
