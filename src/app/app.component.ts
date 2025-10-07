@@ -39,6 +39,8 @@ export class AppComponent implements OnInit {
     { title: 'Rick & Morty-API', url: '/rick-and-morty', icon: 'code' },
     { title: 'Signals', url: '/signals', icon: 'wifi' },
     { title: 'Settings', url: '/settings', icon: 'settings' },
+    { title: 'Dragonball', url: '/dragonball', icon: 'star' },
+    { title: 'Login User', url: '/login-user', icon: 'log-in' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 

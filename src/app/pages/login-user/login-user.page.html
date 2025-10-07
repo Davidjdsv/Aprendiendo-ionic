@@ -1,0 +1,50 @@
+<app-shared-menu [showMenu]="true" [color]="'primary'" [title]="'Login User'">
+</app-shared-menu>
+
+<ion-content class="login-page">
+  <ion-card class="auth-card" style="--auth-hero:url('assets/auth/login-hero.jpg')">
+    <div class="split">
+      <!-- IZQUIERDA: FORM DENTRO DEL MISMO CARD -->
+      <section class="pane form-pane">
+        <header class="card-head">
+          <h1>Iniciar sesión</h1>
+          <p>Bienvenido de nuevo</p>
+        </header>
+
+        <form>
+          <ion-item fill="outline" class="field">
+            <ion-input
+              [(ngModel)]="username"
+              type="text"
+              name="email"
+              autocomplete="off"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item fill="outline" class="field">
+            <ion-input
+              [(ngModel)]="password"
+              type="password"
+              name="password"
+              autocomplete="new-password"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-button type="submit" (click)="onSubmit(username, password)" expand="block" class="login-btn">
+            <ion-icon slot="start" name="log-in-outline"></ion-icon>
+            Entrar
+          </ion-button>
+        </form>
+      </section>
+
+      <!-- DERECHA: FONDO DE IMAGEN DENTRO DEL MISMO CARD -->
+      <aside class="pane image-pane" aria-hidden="true">
+        <img src="../../../assets/" alt="Login Image">
+      </aside>
+    </div>
+  </ion-card>
+</ion-content>
+
+

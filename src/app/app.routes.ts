@@ -112,12 +112,17 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/crud-usuarios/crud-usuarios.page').then( m => m.CrudUsuariosPage)
   },
   {
+    path: 'dragonball',
+    loadComponent: () => import('./pages/dragonball/dragonball.page').then( m => m.DragonballPage)
+  },
+  {
+    path: 'login-user',
+    loadComponent: () => import('./pages/login-user/login-user.page').then( m => m.LoginUserPage)
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
-  },  {
-    path: 'dragonball',
-    loadComponent: () => import('./pages/dragonball/dragonball.page').then( m => m.DragonballPage)
   },
 
 
