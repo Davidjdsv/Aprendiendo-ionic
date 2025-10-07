@@ -47,6 +47,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">Age</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
                     <th scope="col">Favorite Game</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -60,6 +62,8 @@
                     <td>{{ usuario.nombre }}</td>
                     <td>{{ usuario.apellido }}</td>
                     <td>{{ usuario.edad }}</td>
+                    <td>{{ usuario.nombre_usuario }}</td>
+                    <td>{{ usuario.clave }}</td>
                     <td>{{ usuario.juego_favorito }}</td>
                     <td class="ion-display-flex ion-justify-content-center ion-align-items-center ion-text-center">
                       <ion-button size="small" color="warning" (click)="onEditUser(usuario)" >

@@ -8,8 +8,13 @@ import { Usuario, UsuariosResponse } from 'src/app/modelos/crudUsuarios/crud-usu
 })
 export class CrudUsuarios {
   url: string = "http://localhost/backend/api.php"
+  isLoggedIn: boolean = false
 
   constructor(private http: HttpClient){}
+
+  // loginUser(username: string, password: string): Observable<Usuario[]>{
+    
+  // }
 
   // * Espera una respuesta que coincida con el tipo de la interface de UsuariosResponse
   getUsers(): Observable<Usuario[]>{
@@ -23,6 +28,8 @@ export class CrudUsuarios {
           nombre: r.nombre,
           apellido: r.apellido,
           edad: r.edad,
+          nombre_usuario: r.nombre_usuario,
+          clave: r.clave,
           juego_favorito: r.juego_favorito
         }))
       })

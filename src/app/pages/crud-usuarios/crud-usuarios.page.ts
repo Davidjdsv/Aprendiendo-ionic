@@ -65,6 +65,7 @@ export class CrudUsuariosPage implements OnInit {
     this.crudUsuarios.getUsers().subscribe({
       next: (res) => {
         this.usuarios = res; // * Llena el array con lo que traiga del backend desde la bd
+        console.log(this.usuarios)
       },
       error: (err) => {
         console.error('Error: ', err);

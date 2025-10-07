@@ -10,6 +10,7 @@ import {
   IonInput,
 } from '@ionic/angular/standalone';
 import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.component';
+import { CrudUsuarios } from 'src/app/services/crudUsuarios/crud-usuarios-service';
 
 @Component({
   selector: 'app-login-user',
@@ -30,14 +31,19 @@ import { SharedMenuComponent } from 'src/app/components/shared-menu/shared-menu.
   providers: [NgControlStatus],
 })
 export class LoginUserPage implements OnInit {
+  // * Variables para almacenar los valores de los inputs
   username!: string
   password!: string
-  
-  constructor() {}
+
+  constructor(private crudUsuarios: CrudUsuarios) {}
 
   ngOnInit() {}
 
   onSubmit(username: string, password: string){
-    alert(`Username: ${username}, Password: ${password}`);
+    // this.crudUsuarios.loginUser(username, password).subscribe({
+    //   next: (res) => {
+    //     console.log(res)
+    //   }
+    // })
   }
 }
