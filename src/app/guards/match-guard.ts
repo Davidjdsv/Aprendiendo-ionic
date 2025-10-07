@@ -1,11 +1,11 @@
 // src/app/guards/auth.can-match.ts
-import { CanMatchFn, Route, UrlSegment, Router } from '@angular/router';
+import { CanMatchFn, Route, UrlSegment, Router, MaybeAsync, GuardResult } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from '../services/core/auth-service';
 
 export const authCanMatch: CanMatchFn = (
   route: Route,
-  segments: UrlSegment[]) => {
+  segments: UrlSegment[]): MaybeAsync<GuardResult> => {
   
   const auth = inject(AuthService);
   const router = inject(Router);

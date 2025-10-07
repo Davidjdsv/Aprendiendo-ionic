@@ -55,6 +55,8 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     // Escucha los cambios de ruta para determinar si estamos en login
+    this.isLoginPage = this.router.url === '/login-v2' || this.router.url === "/"
+    
     this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
