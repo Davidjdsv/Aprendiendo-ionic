@@ -5,7 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 // src/main.ts
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 bootstrapApplication(AppComponent, {

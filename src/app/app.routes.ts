@@ -120,10 +120,15 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/login-user/login-user.page').then( m => m.LoginUserPage)
   },
   {
+    path: 'grid-test',
+    loadComponent: () => import('./pages/grid-test/grid-test.page').then( m => m.GridTestPage)
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
   },
+
 
 
 ];

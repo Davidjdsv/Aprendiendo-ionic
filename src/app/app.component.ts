@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Dragonball', url: '/dragonball', icon: 'star' },
     { title: 'Login User', url: '/login-user', icon: 'log-in' },
+    { title: 'Grid Test', url: '/grid-test', icon: 'grid' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
