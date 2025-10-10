@@ -7,12 +7,17 @@ import type { UsersMdl, UsersData } from 'src/app/modelos/users/users';
   providedIn: 'root',
 })
 export class AuthService {
+  // * Sesión del usuario a verificar, en un inicio, false
   isLoggedIn: boolean = false;
+
+  // * variable que almacena datos de tipo usuario o si no hay usuario, lo deja en null
   currentUser: UsersMdl | null = null;
 
+  // * Servicio para verificar si el usuario está logueado
   constructor(private http: HttpClient) {}
 
-  // Método que toma el auth.guard que devuelve o true o false
+  // * Método que toma el auth.guard que devuelve o true o false
+  // ? Espera un observable de tipo boolean que devuelve true si el usuario está logueado, y false si no lo está
   getAuthToken(): Observable<boolean> {
     if (this.isLoggedIn) {
       return of(true);
