@@ -5,6 +5,7 @@
 
 
   <!-- [(ngModel)] envia los datos puesto del formulario y se necesita importar formsModule-->
+  <!-- [(ngModel)] es como el name que envía al ts tratanod esas variables -->
   <ion-input label="Nombre" label-placement="floating" fill="outline" [(ngModel)]="nombre"></ion-input>
   <ion-input label="Apellido" label-placement="floating" fill="outline" [(ngModel)]="apellido"></ion-input>
   <ion-input label="Número documento" label-placement="floating" fill="outline" [(ngModel)]="numero_documento"></ion-input>
@@ -13,6 +14,8 @@
   
 
   <!-- El componente hijo RECIBE datos del padre -->
+  <!-- El hijo recibe los datos del padre y los muestra en su template -->
+  <!-- El hijo es como una plantilla a rellenar los datos que le envia el padre a traves de sus propiedades -->
   <app-child
   [title]="title"
   [nombre]="nombre"

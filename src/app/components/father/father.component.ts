@@ -10,6 +10,7 @@ import { IonInput } from '@ionic/angular/standalone'
   imports: [ChildComponent, IonInput, FormsModule]
 })
 export class FatherComponent  implements OnInit {
+  // Estas son las variables que se envia al hijo
   title: string = "Aprendiendo @Input en Angular v20" // Atributo que se envia al mismo padre en html
   nombre!: string
   apellido!: string
