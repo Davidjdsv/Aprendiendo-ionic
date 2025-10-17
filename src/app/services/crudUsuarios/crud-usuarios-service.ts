@@ -36,6 +36,29 @@ export class CrudUsuarios {
     )
   }
 
+  /**
+   * loginUser
+   * Valida credenciales contra el listado de usuarios del backend.
+   *
+   * - Busca un usuario cuyo `nombre_usuario` y `clave` coincidan.
+   * - Actualiza `isLoggedIn` para reflejar el estado de autenticación.
+   * - Devuelve `true` si hay match, `false` en caso contrario.
+   *
+   * Nota: En un backend real, lo ideal es tener un endpoint específico de login,
+   * y retornar un token/usuario. Este método usa `getUsers()` como simplificación.
+   */
+  loginUser(nombre_usuario: string, clave: string): Observable<boolean> {
+    return this.getUsers().pipe(
+      map((users) => {
+        const ok = users.some(
+          (u) => u.nombre_usuario === nombre_usuario && u.clave === clave
+        );
+        this.isLoggedIn = ok;
+        return ok;
+      })
+    );
+  }
+
   // * Obtener un solo usuario
   getUser(id_usuario: number): Observable<Usuario>{
     return this.http.get<Usuario>(`${this.url}?id_usuario=${id_usuario}`)
