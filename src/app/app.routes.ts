@@ -124,11 +124,13 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/grid-test/grid-test.page').then( m => m.GridTestPage)
   },
   {
+    path: 'mcp',
+    loadComponent: () => import('./pages/mcp-page-tuto/mcp-page-tuto.page').then( m => m.McpPageTutoPage)
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
   },
-
-
 
 ];
