@@ -37,7 +37,7 @@ const config: Config = {
   i18n: {
     // Si deseas traducir el sitio, puedes añadir 'es' aquí.
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
   },
 
   presets: [
