@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tutorial MCP Server</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tutorial MCP</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <!-- Card explicativa -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Servidor MCP Configurado</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Este componente tiene un servidor MCP con una herramienta registrada:</p>
+        <ul>
+          <li><strong>fetch-weather:</strong> Obtiene el clima de una ciudad</li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botón para probar la herramienta -->
+    <ion-button expand="block" (click)="testWeatherTool()">
+      Probar Herramienta de Clima
+    </ion-button>
+
+    <!-- Resultado -->
+    <ion-card *ngIf="weatherResult">
+      <ion-card-header>
+        <ion-card-title>Resultado:</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ weatherResult }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

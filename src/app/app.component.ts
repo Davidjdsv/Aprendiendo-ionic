@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Interceptor } from './services/interceptor/interceptor';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
-import { filter } from 'rxjs/operators';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core'
+import { Router, NavigationEnd } from '@angular/router'
+import { RouterLink, RouterLinkActive } from '@angular/router'
+import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet } from '@ionic/angular/standalone'
+import { addIcons } from 'ionicons'
+
+import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons'
+import { filter } from 'rxjs/operators'
+import { DatePipe } from '@angular/common'
 
 // El enrutador se encarga de cambiar de página
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, DatePipe],
-  providers: [HttpClient, Interceptor, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],  
+  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, DatePipe],
+  // providers: [HttpClient, Interceptor, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
 })
 
 // Aqui se ponen las rutas de las nuevas páginas
@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
     { title: 'Dragonball', url: '/dragonball', icon: 'star' },
     { title: 'Login User', url: '/login-user', icon: 'log-in' },
     { title: 'Grid Test', url: '/grid-test', icon: 'grid' },
+    { title: 'MCP', url: '/mcp', icon: 'code' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
@@ -51,8 +52,9 @@ export class AppComponent implements OnInit {
     year: 'numeric',
     month: '2-digit',
   });
-  
-  constructor(private router: Router) {
+
+  private router = inject(Router);
+  constructor() {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
   }
   
