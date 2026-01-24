@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { AppResaltar } from 'src/app/directives/app-resaltar';
 
 @Component({
   selector: 'app-city',
@@ -33,6 +34,7 @@ import { RouterLink } from '@angular/router';
     RouterLink,
     IonButton,
     SharedMenuComponent,
+    AppResaltar
   ],
 })
 export class CityPage implements OnInit {

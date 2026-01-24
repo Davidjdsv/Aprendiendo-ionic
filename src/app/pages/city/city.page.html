@@ -13,9 +13,15 @@
         <ion-card-subtitle>Población: {{ poblacion }}</ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content class="card-body">
+      <ion-card-content appResaltar="cyan" class="card-body">
         <p>{{ descripcion }}</p>
       </ion-card-content>
+
+      <p appResaltar>
+        Pasa el mouse por aqui para probar la directiva
+      </p>
+
+
       
     </ion-card>
 

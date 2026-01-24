@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { ToastController, AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.page.html',
@@ -34,7 +35,7 @@ import { ToastController, AlertController } from '@ionic/angular';
     IonCardTitle,
     IonButton,
     RouterLink,
-    SharedMenuComponent,
+    SharedMenuComponent
   ],
 })
 export class CountriesPage implements OnInit {

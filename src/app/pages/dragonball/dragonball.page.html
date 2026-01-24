@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dragonball</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Dragonball</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dragonball</ion-title>
+    <ion-toolbar color="primary">
+      <ion-title size="large">Dragonball</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <h1>Dragonball</h1>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Personajes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          @for(pj of personajes(); track pj.nombre; let index = $index, even = $even){
+            <ion-item>
+              <ion-label [class.text-danger]="pj.ki > 1000000">{{pj.id + 1}}</ion-label>
+              <ion-label [class.text-danger]="even">{{pj.nombre}}</ion-label>
+              <ion-label [class.text-danger]="even">{{pj.raza}}</ion-label>
+            </ion-item>
+          }
+        </ion-list-header>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>
